@@ -49,7 +49,7 @@ const Home = () => {
             transition="all 0.5s ease-in-out"
             onClick={() => setTimeWindow("day")}
           >
-            Theo ngày
+            Today
           </Box>
           <Box
             as="button"
@@ -62,7 +62,7 @@ const Home = () => {
             transition="all 0.5s ease-in-out"
             onClick={() => setTimeWindow("week")}
           >
-            Theo tuần
+            This Week
           </Box>
         </Flex>
       </Flex>

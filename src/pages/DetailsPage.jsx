@@ -33,16 +33,16 @@ import {
   resolveRatingColor,
 } from "../utils/helpers";
 import VideoComponent from "../components/VideoComponent";
-import { useAuth } from "../context/useAuth";
-import { useFirestore } from "../services/firestore";
+// import { useAuth } from "../context/useAuth";
+// import { useFirestore } from "../services/firestore";
 
 const DetailsPage = () => {
   const router = useParams();
   const { type, id } = router;
 
-  const { user } = useAuth();
-  const { addToWatchlist, checkIfInWatchlist, removeFromWatchlist } =
-    useFirestore();
+  //   const { user } = useAuth();
+  //   const { addToWatchlist, checkIfInWatchlist, removeFromWatchlist } =
+  //     useFirestore();
   const toast = useToast();
 
   const [details, setDetails] = useState({});
@@ -89,14 +89,14 @@ const DetailsPage = () => {
   console.log(video, videos, "videos");
 
   const handleSaveToWatchlist = async () => {
-    if (!user) {
-      toast({
-        title: "Login to add to watchlist",
-        status: "error",
-        isClosable: true,
-      });
-      return;
-    }
+    // if (!user) {
+    //   toast({
+    //     title: "Login to add to watchlist",
+    //     status: "error",
+    //     isClosable: true,
+    //   });
+    //   return;
+    // }
 
     const data = {
       id: details?.id,
@@ -109,27 +109,27 @@ const DetailsPage = () => {
     };
 
     const dataId = details?.id?.toString();
-    await addToWatchlist(user?.uid, dataId, data);
+    // await addToWatchlist(user?.uid, dataId, data);
     const isSetToWatchlist = await checkIfInWatchlist(user?.uid, dataId);
     setIsInWatchlist(isSetToWatchlist);
   };
 
-  useEffect(() => {
-    if (!user) {
-      setIsInWatchlist(false);
-      return;
-    }
+  //   useEffect(() => {
+  //     if (!user) {
+  //       setIsInWatchlist(false);
+  //       return;
+  //     }
 
-    checkIfInWatchlist(user?.uid, id).then((data) => {
-      setIsInWatchlist(data);
-    });
-  }, [id, user, checkIfInWatchlist]);
+  //     checkIfInWatchlist(user?.uid, id).then((data) => {
+  //       setIsInWatchlist(data);
+  //     });
+  //   }, [id, user, checkIfInWatchlist]);
 
-  const handleRemoveFromWatchlist = async () => {
-    await removeFromWatchlist(user?.uid, id);
-    const isSetToWatchlist = await checkIfInWatchlist(user?.uid, id);
-    setIsInWatchlist(isSetToWatchlist);
-  };
+  //   const handleRemoveFromWatchlist = async () => {
+  //     await removeFromWatchlist(user?.uid, id);
+  //     const isSetToWatchlist = await checkIfInWatchlist(user?.uid, id);
+  //     setIsInWatchlist(isSetToWatchlist);
+  //   };
 
   if (loading) {
     return (
@@ -159,6 +159,7 @@ const DetailsPage = () => {
       >
         <Container maxW={"container.xl"}>
           <Flex
+            mt={"4"}
             alignItems={"center"}
             gap="10"
             flexDirection={{ base: "column", md: "row" }}
@@ -248,7 +249,7 @@ const DetailsPage = () => {
               <Text fontSize={"md"} mb={"3"}>
                 {details?.overview}
               </Text>
-              <Flex mt="6" gap="2">
+              <Flex mb={4} mt={6} gap="2">
                 {details?.genres?.map((genre) => (
                   <Badge key={genre?.id} p="1">
                     {genre?.name}
@@ -264,11 +265,30 @@ const DetailsPage = () => {
         <Heading as="h2" fontSize={"md"} textTransform={"uppercase"} mt="10">
           Cast
         </Heading>
-        <Flex mt="5" mb="10" overflowX={"scroll"} gap={"5"}>
+        <Flex
+          mt="5"
+          mb="10"
+          overflowX={"scroll"}
+          gap={"5"}
+          sx={{
+            "::-webkit-scrollbar": {
+              height: "3px",
+            },
+            "::-webkit-scrollbar-thumb": {
+              background: "red",
+            },
+            "::-webkit-scrollbar-thumb:hover": {
+              cursor: "pointer",
+            },
+            "::-webkit-scrollbar-track": {
+              background: "gray.900",
+            },
+          }}
+        >
           {cast?.length === 0 && <Text>No cast found</Text>}
           {cast &&
             cast?.map((item) => (
-              <Box key={item?.id} minW={"150px"}>
+              <Box key={item?.id} minW={"150px"} mb={"8px"}>
                 <Image
                   src={`${imagePath}/${item?.profile_path}`}
                   w={"100%"}
@@ -276,6 +296,7 @@ const DetailsPage = () => {
                   objectFit={"cover"}
                   borderRadius={"sm"}
                 />
+                <Text mt={2}>{item?.name}</Text>
               </Box>
             ))}
         </Flex>
@@ -290,10 +311,29 @@ const DetailsPage = () => {
           Videos
         </Heading>
         <VideoComponent id={video?.key} />
-        <Flex mt="5" mb="10" overflowX={"scroll"} gap={"5"}>
+        <Flex
+          mt="5"
+          mb="10"
+          overflowX={"scroll"}
+          gap={"5"}
+          sx={{
+            "::-webkit-scrollbar": {
+              height: "3px",
+            },
+            "::-webkit-scrollbar-thumb": {
+              background: "red",
+            },
+            "::-webkit-scrollbar-thumb:hover": {
+              cursor: "pointer",
+            },
+            "::-webkit-scrollbar-track": {
+              background: "gray.900",
+            },
+          }}
+        >
           {videos &&
             videos?.map((item) => (
-              <Box key={item?.id} minW={"290px"}>
+              <Box mb={4} key={item?.id} minW={"290px"}>
                 <VideoComponent id={item?.key} small />
                 <Text fontSize={"sm"} fontWeight={"bold"} mt="2" noOfLines={2}>
                   {item?.name}{" "}

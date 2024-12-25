@@ -14,6 +14,18 @@ const styles = {
         "blackAlpha.900"
       )(props),
     },
+    "::-webkit-scrollbar": {
+      width: "3px",
+    },
+    "::-webkit-scrollbar-thumb": {
+      background: "red",
+    },
+    "::-webkit-scrollbar-thumb:hover": {
+      cursor: "pointer",
+    },
+    "::-webkit-scrollbar-track": {
+      background: "gray.900",
+    },
   }),
 };
 
