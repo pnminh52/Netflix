@@ -10,12 +10,14 @@ import {
 } from "@chakra-ui/react";
 import { fetchTrending } from "../services/api";
 import CardComponent from "../components/CardComponent";
+import PaginationComponent from "../components/PaginationComponent";
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
-
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPage] = useState(1);
   useEffect(() => {
     setLoading(true);
     fetchTrending(timeWindow)
@@ -29,8 +31,22 @@ const Home = () => {
         setLoading(false);
       });
   }, [timeWindow]);
-
-  console.log(data, "data");
+  useEffect(() => {
+    fetchTrending(activePage)
+      .then((res) => {
+        console.log(res, "res");
+        setMovies(res?.results);
+        setActivePage(res?.page);
+        setTotalPage(res?.total_pages);
+      })
+      .catch((err) => {
+        console.log(err, "err");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [activePage]);
+  // console.log(data, "data");
 
   return (
     <Container maxW={"container.xl"}>
@@ -121,6 +137,11 @@ const Home = () => {
           </Fade>
         ))}
       </Grid>
+      <PaginationComponent
+        activePage={activePage}
+        totalPages={totalPages}
+        setActivePage={setActivePage}
+      />
     </Container>
   );
 };

@@ -16,15 +16,15 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activePage, setActivePage] = useState(1);
-  const [sortBy, setSortBy] = useState("popularity.desc");
   const [totalPages, setTotalPage] = useState(1);
+  const [sortBy, setSortBy] = useState("popularity.desc");
   useEffect(() => {
     setIsLoading(true);
     fetchMovies(activePage, sortBy)
       .then((res) => {
         console.log(res, "res");
-        setActivePage(res?.page);
         setMovies(res?.results);
+        setActivePage(res?.page);
         setTotalPage(res?.total_pages);
       })
       .catch((err) => {
