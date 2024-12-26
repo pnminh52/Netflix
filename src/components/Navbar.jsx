@@ -182,7 +182,9 @@ const Navbar = () => {
                         <Link to="/watchlist">Watchlist</Link>
                         <Button
                           variant={"outline"}
-                          colorScheme="red"
+                          border={"1px solid red"}
+                          borderRadius={0}
+                          textColor={"red"}
                           onClick={logout}
                         >
                           Logout
