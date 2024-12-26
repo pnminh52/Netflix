@@ -6,6 +6,7 @@ import {
   Grid,
   Heading,
   Skeleton,
+  Fade,
 } from "@chakra-ui/react";
 import { fetchTrending } from "../services/api";
 import CardComponent from "../components/CardComponent";
@@ -39,30 +40,46 @@ const Home = () => {
         </Heading>
         <Flex alignItems={"center"} gap={"0"} borderRadius={"10px"}>
           <Box
+            position="relative"
             as="button"
             px="3"
             py="1"
-            borderBottom={
-              timeWindow === "day" ? "2px solid red" : "2px solid transparent"
-            }
             color={`${timeWindow != "day" ? "gray.500" : "white"}`}
             bg={`${timeWindow === "day" ? "gray.800" : ""}`}
-            transition="all 0.5s ease-in-out"
+            transition="all 0.3s ease-in-out"
             onClick={() => setTimeWindow("day")}
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left: timeWindow === "day" ? "0" : "50%",
+              width: timeWindow === "day" ? "100%" : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
           >
             Today
           </Box>
           <Box
+            position={"relative"}
             as="button"
             px="3"
             py="1"
-            borderBottom={
-              timeWindow === "week" ? "2px solid red" : "2px solid transparent"
-            }
             color={`${timeWindow != "week" ? "gray.500" : "white"}`}
             bg={`${timeWindow === "week" ? "gray.800" : ""}`}
-            transition="all 0.5s ease-in-out"
+            transition="all 0.3s ease-in-out"
             onClick={() => setTimeWindow("week")}
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left: timeWindow === "week" ? "0" : "50%",
+              width: timeWindow === "week" ? "100%" : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
           >
             This Week
           </Box>
@@ -78,7 +95,7 @@ const Home = () => {
         }}
         gap={"4"}
       >
-        {data &&
+        {/* {data &&
           data?.map((item, i) =>
             loading ? (
               <Skeleton height={300} key={i} />
@@ -89,7 +106,20 @@ const Home = () => {
                 type={item?.media_type}
               />
             )
-          )}
+          )} */}
+        {data?.map((item, i) => (
+          <Fade key={item?.id} in={!loading} transition="all 0.3s ease-in-out">
+            {loading ? (
+              <Skeleton height={300} />
+            ) : (
+              <CardComponent
+                key={item?.id}
+                item={item}
+                type={item?.media_type}
+              />
+            )}
+          </Fade>
+        ))}
       </Grid>
     </Container>
   );

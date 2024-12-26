@@ -6,6 +6,7 @@ import {
   Select,
   Box,
   Skeleton,
+  Fade,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { fetchMovies } from "../../services/api";
@@ -42,6 +43,7 @@ const Movies = () => {
 
         <Flex alignItems={"center"} gap={"0"} borderRadius={"10px"}>
           <Box
+            position="relative"
             onClick={() => {
               setActivePage(1);
               setSortBy("popularity.desc");
@@ -49,18 +51,24 @@ const Movies = () => {
             as="button"
             px="3"
             py="1"
-            borderBottom={
-              sortBy === "popularity.desc"
-                ? "2px solid red"
-                : "2px solid transparent"
-            }
-            color={`${sortBy !== "popularity.desc" ? "gray.500" : "white"}`}
-            bg={`${sortBy === "popularity.desc" ? "gray.800" : ""}`}
-            transition={"all 0.5s ease-in-out"}
+            color={sortBy !== "popularity.desc" ? "gray.500" : "white"}
+            bg={sortBy === "popularity.desc" ? "gray.800" : ""}
+            transition="all 0.3s ease-in-out"
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left: sortBy === "popularity.desc" ? "0" : "50%",
+              width: sortBy === "popularity.desc" ? "100%" : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
           >
             Popular
           </Box>
           <Box
+            position="relative"
             onClick={() => {
               setActivePage(1);
               setSortBy("vote_average.desc&vote_count.gte=1000");
@@ -68,24 +76,85 @@ const Movies = () => {
             as="button"
             px="3"
             py="1"
-            borderBottom={
-              sortBy === "vote_average.desc&vote_count.gte=1000"
-                ? "2px solid red"
-                : "2px solid transparent"
-            }
-            color={`${
+            color={
               sortBy !== "vote_average.desc&vote_count.gte=1000"
                 ? "gray.500"
                 : "white"
-            }`}
-            bg={`${
+            }
+            bg={
               sortBy === "vote_average.desc&vote_count.gte=1000"
                 ? "gray.800"
                 : ""
-            }`}
-            transition={"all 0.5s ease-in-out"}
+            }
+            transition="all 0.3s ease-in-out"
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left:
+                sortBy === "vote_average.desc&vote_count.gte=1000"
+                  ? "0"
+                  : "50%",
+              width:
+                sortBy === "vote_average.desc&vote_count.gte=1000"
+                  ? "100%"
+                  : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
           >
-            Top Rated
+            Vote
+          </Box>
+          <Box
+            position="relative"
+            onClick={() => {
+              setActivePage(1);
+              setSortBy("vote_average.desc");
+            }}
+            as="button"
+            px="3"
+            py="1"
+            color={sortBy !== "vote_average.desc" ? "gray.500" : "white"}
+            bg={sortBy === "vote_average.desc" ? "gray.800" : ""}
+            transition="all 0.3s ease-in-out"
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left: sortBy === "vote_average.desc" ? "0" : "50%",
+              width: sortBy === "vote_average.desc" ? "100%" : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            Rating
+          </Box>
+          <Box
+            position="relative"
+            onClick={() => {
+              setActivePage(1);
+              setSortBy("revenue.desc");
+            }}
+            as="button"
+            px="3"
+            py="1"
+            color={sortBy !== "revenue.desc" ? "gray.500" : "white"}
+            bg={sortBy === "revenue.desc" ? "gray.800" : ""}
+            transition="all 0.3s ease-in-out"
+            _after={{
+              content: '""',
+              position: "absolute",
+              bottom: "0",
+              left: sortBy === "revenue.desc" ? "0" : "50%",
+              width: sortBy === "revenue.desc" ? "100%" : "0",
+              height: "2px",
+              backgroundColor: "red",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            Revenue
           </Box>
         </Flex>
       </Flex>
@@ -100,15 +169,20 @@ const Movies = () => {
         gap={"4"}
       >
         {movies &&
-          movies?.map((item, i) =>
-            isLoading ? (
-              <Skeleton height={300} key={i} />
-            ) : (
-              <CardComponent key={item?.id} item={item} type={"movie"} />
-            )
-          )}
+          movies?.map((item, i) => (
+            <Fade
+              key={item?.id}
+              in={!isLoading}
+              transition={"all 0.3s easy-in-out"}
+            >
+              {isLoading ? (
+                <Skeleton height={300} key={i} />
+              ) : (
+                <CardComponent key={item?.id} item={item} type={"movie"} />
+              )}
+            </Fade>
+          ))}
       </Grid>
-
       <PaginationComponent
         activePage={activePage}
         totalPages={totalPages}
