@@ -33,16 +33,16 @@ import {
   resolveRatingColor,
 } from "../utils/helpers";
 import VideoComponent from "../components/VideoComponent";
-// import { useAuth } from "../context/useAuth";
-// import { useFirestore } from "../services/firestore";
+import { useAuth } from "../context/useAuth";
+import { useFirestore } from "../services/firestore";
 
 const DetailsPage = () => {
   const router = useParams();
   const { type, id } = router;
 
-  //   const { user } = useAuth();
-  //   const { addToWatchlist, checkIfInWatchlist, removeFromWatchlist } =
-  //     useFirestore();
+  const { user } = useAuth();
+  const { addToWatchlist, checkIfInWatchlist, removeFromWatchlist } =
+    useFirestore();
   const toast = useToast();
 
   const [details, setDetails] = useState({});
@@ -89,14 +89,14 @@ const DetailsPage = () => {
   console.log(video, videos, "videos");
 
   const handleSaveToWatchlist = async () => {
-    // if (!user) {
-    //   toast({
-    //     title: "Login to add to watchlist",
-    //     status: "error",
-    //     isClosable: true,
-    //   });
-    //   return;
-    // }
+    if (!user) {
+      toast({
+        title: "Login to add to watchlist",
+        status: "error",
+        isClosable: true,
+      });
+      return;
+    }
 
     const data = {
       id: details?.id,
@@ -109,27 +109,27 @@ const DetailsPage = () => {
     };
 
     const dataId = details?.id?.toString();
-    // await addToWatchlist(user?.uid, dataId, data);
+    await addToWatchlist(user?.uid, dataId, data);
     const isSetToWatchlist = await checkIfInWatchlist(user?.uid, dataId);
     setIsInWatchlist(isSetToWatchlist);
   };
 
-  //   useEffect(() => {
-  //     if (!user) {
-  //       setIsInWatchlist(false);
-  //       return;
-  //     }
+  useEffect(() => {
+    if (!user) {
+      setIsInWatchlist(false);
+      return;
+    }
 
-  //     checkIfInWatchlist(user?.uid, id).then((data) => {
-  //       setIsInWatchlist(data);
-  //     });
-  //   }, [id, user, checkIfInWatchlist]);
+    checkIfInWatchlist(user?.uid, id).then((data) => {
+      setIsInWatchlist(data);
+    });
+  }, [id, user, checkIfInWatchlist]);
 
-  //   const handleRemoveFromWatchlist = async () => {
-  //     await removeFromWatchlist(user?.uid, id);
-  //     const isSetToWatchlist = await checkIfInWatchlist(user?.uid, id);
-  //     setIsInWatchlist(isSetToWatchlist);
-  //   };
+  const handleRemoveFromWatchlist = async () => {
+    await removeFromWatchlist(user?.uid, id);
+    const isSetToWatchlist = await checkIfInWatchlist(user?.uid, id);
+    setIsInWatchlist(isSetToWatchlist);
+  };
 
   if (loading) {
     return (

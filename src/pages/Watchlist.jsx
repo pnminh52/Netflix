@@ -1,30 +1,29 @@
 import { useState, useEffect } from "react";
-// import { useFirestore } from "../services/firestore";
+import { useFirestore } from "../services/firestore";
 import { useAuth } from "../context/useAuth";
 import { Container, Flex, Grid, Heading, Spinner } from "@chakra-ui/react";
-// import WatchlistCard from "../components/WatchlistCard";
-
+import WatchlistCard from "../components/WatchlistCard";
 const Watchlist = () => {
-  //   const { getWatchlist } = useFirestore();
+  const { getWatchlist } = useFirestore();
   const { user } = useAuth();
   const [watchlist, setWatchlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  //   useEffect(() => {
-  //     if (user?.uid) {
-  //       getWatchlist(user?.uid)
-  //         .then((data) => {
-  //           setWatchlist(data);
-  //           console.log(data, "data");
-  //         })
-  //         .catch((err) => {
-  //           console.log(err, "error");
-  //         })
-  //         .finally(() => {
-  //           setIsLoading(false);
-  //         });
-  //     }
-  //   }, [user?.uid, getWatchlist]);
+  useEffect(() => {
+    if (user?.uid) {
+      getWatchlist(user?.uid)
+        .then((data) => {
+          setWatchlist(data);
+          console.log(data, "data");
+        })
+        .catch((err) => {
+          console.log(err, "error");
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [user?.uid, getWatchlist]);
 
   return (
     <Container maxW={"container.xl"}>
