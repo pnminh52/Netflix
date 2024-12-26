@@ -12,7 +12,7 @@ import Home from "./pages/Home.jsx";
 import Search from "./pages/search/Search.jsx";
 import Shows from "./pages/shows/Shows.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
-import Watchlist from "./pages/WatchList.jsx";
+import Watchlist from "./pages/Watchlist.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
