@@ -45,6 +45,7 @@ const Home = () => {
             borderBottom={
               timeWindow === "day" ? "2px solid red" : "2px solid transparent"
             }
+            color={`${timeWindow != "day" ? "gray.500" : "white"}`}
             bg={`${timeWindow === "day" ? "gray.800" : ""}`}
             transition="all 0.5s ease-in-out"
             onClick={() => setTimeWindow("day")}
@@ -58,6 +59,7 @@ const Home = () => {
             borderBottom={
               timeWindow === "week" ? "2px solid red" : "2px solid transparent"
             }
+            color={`${timeWindow != "week" ? "gray.500" : "white"}`}
             bg={`${timeWindow === "week" ? "gray.800" : ""}`}
             transition="all 0.5s ease-in-out"
             onClick={() => setTimeWindow("week")}
