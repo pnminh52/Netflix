@@ -156,7 +156,7 @@ const Navbar = () => {
                 <DrawerCloseButton />
                 <DrawerHeader>
                   {user ? (
-                    <Flex alignItems="center" gap="2">
+                    <Flex cursor={"pointer"} alignItems="center" gap="2">
                       <Avatar bg="red.500" size={"sm"} name={user?.email} />
                       <Box fontSize={"sm"}>
                         {user?.displayName || user?.email}
@@ -177,10 +177,11 @@ const Navbar = () => {
                     <Link to="/">Home</Link>
                     <Link to="/movies">Movies</Link>
                     <Link to="/shows">TV Shows</Link>
-                    {user && (
+                    {user ? (
                       <>
                         <Link to="/watchlist">Watchlist</Link>
                         <Button
+                          mt={2}
                           border={"1px solid red.600"}
                           bg={"red.600"}
                           borderRadius={0}
@@ -191,6 +192,18 @@ const Navbar = () => {
                           Logout
                         </Button>
                       </>
+                    ) : (
+                      <Button
+                        mt={2}
+                        border={"1px solid red.600"}
+                        bg={"red.600"}
+                        borderRadius={0}
+                        textColor={"white"}
+                        onClick={handleGoogleLogin}
+                        _hover={{ bg: "red.600" }}
+                      >
+                        Login
+                      </Button>
                     )}
                   </Flex>
                 </DrawerBody>

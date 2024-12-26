@@ -91,7 +91,7 @@ const DetailsPage = () => {
   const handleSaveToWatchlist = async () => {
     if (!user) {
       toast({
-        title: "Login to add to watchlist",
+        title: "You must be logged in to add to watchlist",
         status: "error",
         isClosable: true,
       });
@@ -221,6 +221,7 @@ const DetailsPage = () => {
                     leftIcon={<CheckCircleIcon />}
                     colorScheme="green"
                     variant={"outline"}
+                    borderRadius={0}
                     onClick={handleRemoveFromWatchlist}
                   >
                     In watchlist
@@ -229,6 +230,7 @@ const DetailsPage = () => {
                   <Button
                     leftIcon={<SmallAddIcon />}
                     variant={"outline"}
+                    borderRadius={0}
                     onClick={handleSaveToWatchlist}
                   >
                     Add to watchlist

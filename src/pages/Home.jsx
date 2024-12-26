@@ -137,9 +137,7 @@ const Home = () => {
           </Fade>
         ))}
       </Grid>
-      <Box mt={4} mb={4} textAlign="center">
-        <hr color="red" />
-      </Box>
+      <Box mt={4} position="relative" mb={4} textAlign="center"></Box>
       {/* <PaginationComponent
         activePage={activePage}
         totalPages={totalPages}
