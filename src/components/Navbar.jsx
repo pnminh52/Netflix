@@ -181,11 +181,12 @@ const Navbar = () => {
                       <>
                         <Link to="/watchlist">Watchlist</Link>
                         <Button
-                          variant={"outline"}
-                          border={"1px solid red"}
+                          border={"1px solid red.600"}
+                          bg={"red.600"}
                           borderRadius={0}
-                          textColor={"red"}
+                          textColor={"white"}
                           onClick={logout}
+                          _hover={{ bg: "red.600" }}
                         >
                           Logout
                         </Button>

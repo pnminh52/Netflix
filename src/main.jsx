@@ -12,7 +12,7 @@ import Home from "./pages/Home.jsx";
 import Search from "./pages/search/Search.jsx";
 import Shows from "./pages/shows/Shows.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
-
+import Watchlist from "./pages/WatchList.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/:type/:id",
         element: <DetailsPage />,
+      },
+      {
+        path: "/watchlist",
+        element: <Watchlist />,
       },
     ],
   },

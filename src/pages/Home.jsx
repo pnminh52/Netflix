@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { fetchTrending } from "../services/api";
 import CardComponent from "../components/CardComponent";
-import PaginationComponent from "../components/PaginationComponent";
+// import PaginationComponent from "../components/PaginationComponent";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -31,21 +31,21 @@ const Home = () => {
         setLoading(false);
       });
   }, [timeWindow]);
-  useEffect(() => {
-    fetchTrending(activePage)
-      .then((res) => {
-        console.log(res, "res");
-        setMovies(res?.results);
-        setActivePage(res?.page);
-        setTotalPage(res?.total_pages);
-      })
-      .catch((err) => {
-        console.log(err, "err");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [activePage]);
+  // useEffect(() => {
+  //   fetchTrending(activePage)
+  //     .then((res) => {
+  //       console.log(res, "res");
+  //       setMovies(res?.results);
+  //       setActivePage(res?.page);
+  //       setTotalPage(res?.total_pages);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err, "err");
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // }, [activePage]);
   // console.log(data, "data");
 
   return (
@@ -137,11 +137,14 @@ const Home = () => {
           </Fade>
         ))}
       </Grid>
-      <PaginationComponent
+      <Box mt={4} mb={4} textAlign="center">
+        <hr color="red" />
+      </Box>
+      {/* <PaginationComponent
         activePage={activePage}
         totalPages={totalPages}
         setActivePage={setActivePage}
-      />
+      /> */}
     </Container>
   );
 };
