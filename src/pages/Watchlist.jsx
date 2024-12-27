@@ -27,8 +27,8 @@ const Watchlist = () => {
 
   return (
     <Container maxW={"container.xl"}>
-      <Flex alignItems={"baseline"} gap={"4"} my={"10"}>
-        <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
+      <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={0}>
+        <Heading fontSize={"lg"} fontWeight={"medium"}>
           Watchlist
         </Heading>
       </Flex>

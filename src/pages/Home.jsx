@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <Container maxW={"container.xl"}>
       <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
-        <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
+        <Heading fontSize={"lg"} fontWeight={"medium"}>
           Trending
         </Heading>
         <Flex alignItems={"center"} gap={"0"} borderRadius={"10px"}>

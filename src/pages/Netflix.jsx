@@ -55,11 +55,14 @@ const Netflix = () => {
             <Heading
               textTransform={"uppercase"}
               fontSize={["2xl", "3xl", "4xl"]}
-              mb={0}
+              mb={4}
             >
-              Unlimited movies, TV shows, and more
+              Unlimited movies, 
+              <Heading>
+              TV shows, and more
+              </Heading>
             </Heading>
-            <Text fontSize={["sm", "md"]} fontWeight={"normal"} mb={2}>
+            <Text mb={4} fontSize={["sm", "md"]} fontWeight={"normal"} >
               Starts at 70,000 ₫. Cancel anytime
             </Text>
             <Button
@@ -96,7 +99,7 @@ const Netflix = () => {
             templateColumns={"repeat(auto-fit, minmax(300px, 1fr))"}
             justifyItems="center"
             gap={4}
-            minHeight={"320px"}
+            minHeight={"250px"}
           >
             {/* Card 1 */}
             <Card class="card">

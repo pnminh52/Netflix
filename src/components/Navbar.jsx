@@ -124,11 +124,11 @@ const Navbar = () => {
                     name={user?.email}
                   />
                 </MenuButton>
-                <MenuList>
+                <MenuList mt={2} borderRadius={0} bg={'black'} >
                   <Link to="/watchlist">
-                    <MenuItem>Watchlist</MenuItem>
+                    <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Watchlist</MenuItem>
                   </Link>
-                  <MenuItem onClick={logout}>Logout</MenuItem>
+                  <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}} bg={'black'} onClick={logout}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             )}
@@ -141,6 +141,7 @@ const Navbar = () => {
               />
             )}
           </Flex>
+          {/* Mobile layout */}
           <Flex
             display={{ base: "flex", md: "none" }}
             alignItems={"center"}
@@ -150,11 +151,10 @@ const Navbar = () => {
               <SearchIcon fontSize={"xl"} />
             </Link>
             <IconButton onClick={onOpen} icon={<HamburgerIcon />} />
-            <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+            <Drawer  isOpen={isOpen} placement="right" onClose={onClose}>
               <DrawerOverlay />
               <DrawerContent bg={"black"}>
-                <DrawerCloseButton />
-                {/* Mobile layout */}
+                <DrawerCloseButton mt={2}/>
                 <DrawerHeader>
                   {user ? (
                     <Flex cursor={"pointer"} alignItems="center" gap="2">
@@ -183,11 +183,11 @@ const Navbar = () => {
                         <Button
                           mt={2}
                           border={"1px solid red"}
-                          bg={"red"}
+                          bg={"#E50914"}
                           borderRadius={0}
                           textColor={"white"}
                           onClick={logout}
-                          _hover={{ bg: "red" }}
+                          _hover={{ bg: "E50914" }}
                         >
                           Logout
                         </Button>
@@ -196,11 +196,11 @@ const Navbar = () => {
                       <Button
                         mt={2}
                         border={"1px solid red"}
-                        bg={"red"}
+                        bg={"#E50914"}
                         borderRadius={0}
                         textColor={"white"}
                         onClick={handleGoogleLogin}
-                        _hover={{ bg: "red" }}
+                        _hover={{ bg: "#E50914" }}
                       >
                         Login
                       </Button>
