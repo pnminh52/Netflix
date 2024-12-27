@@ -18,6 +18,8 @@ const Netflix = () => {
   };
   return (
     <div>
+      
+       <div>
       <Flex alignItems={"baseline"}>
         <Box position={"relative"} w={"100%"} overflow={"hidden"}>
           <Box
@@ -1218,6 +1220,8 @@ const Netflix = () => {
         </Button> */}
       </Container>
     </div>
+    </div>
+   
   );
 };
 
