@@ -39,7 +39,7 @@ const Navbar = () => {
       <Container maxW={"container.xl"}>
         <Flex justifyContent={"space-between"}>
           <Link to="/">
-            <Box>
+            <Box display={"flex"} alignItems={"center"} mt={2}>
               <svg
                 viewBox="0 0 111 30"
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ const Navbar = () => {
             alignItems={"center"}
             display={{ base: "none", md: "flex" }}
           >
-            <Link to="/">Home</Link>
+            <Link to="/homepage">Home</Link>
             <Link to="/movies">Movies</Link>
             <Link to="/shows">TV Shows</Link>
             <Link to="/search">
@@ -174,7 +174,7 @@ const Navbar = () => {
 
                 <DrawerBody>
                   <Flex flexDirection={"column"} gap={"4"} onClick={onClose}>
-                    <Link to="/">Home</Link>
+                    <Link to="/homepage">Home</Link>
                     <Link to="/movies">Movies</Link>
                     <Link to="/shows">TV Shows</Link>
                     {user ? (

@@ -13,6 +13,7 @@ import Search from "./pages/search/Search.jsx";
 import Shows from "./pages/shows/Shows.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
 import Watchlist from "./pages/Watchlist.jsx";
+import Netflix from "./pages/Netflix.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Netflix />,
+      },
+      {
+        path: "/homepage",
         element: <Home />,
       },
       {

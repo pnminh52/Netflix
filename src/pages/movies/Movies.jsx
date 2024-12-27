@@ -36,7 +36,7 @@ const Movies = () => {
   }, [activePage, sortBy]);
   return (
     <Container maxW={"container.xl"}>
-      <Flex alignItems={"baseline"} gap={"4"} my="10">
+      <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
         <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
           Discover Movies
         </Heading>
@@ -52,7 +52,7 @@ const Movies = () => {
             px="3"
             py="1"
             color={sortBy !== "popularity.desc" ? "gray.500" : "white"}
-            bg={sortBy === "popularity.desc" ? "gray.800" : ""}
+            // bg={sortBy === "popularity.desc" ? "gray.800" : ""}
             transition="all 0.3s ease-in-out"
             _after={{
               content: '""',
@@ -81,11 +81,11 @@ const Movies = () => {
                 ? "gray.500"
                 : "white"
             }
-            bg={
-              sortBy === "vote_average.desc&vote_count.gte=1000"
-                ? "gray.800"
-                : ""
-            }
+            // bg={
+            //   sortBy === "vote_average.desc&vote_count.gte=1000"
+            //     ? "gray.800"
+            //     : ""
+            // }
             transition="all 0.3s ease-in-out"
             _after={{
               content: '""',
@@ -116,7 +116,7 @@ const Movies = () => {
             px="3"
             py="1"
             color={sortBy !== "vote_average.desc" ? "gray.500" : "white"}
-            bg={sortBy === "vote_average.desc" ? "gray.800" : ""}
+            // bg={sortBy === "vote_average.desc" ? "gray.800" : ""}
             transition="all 0.3s ease-in-out"
             _after={{
               content: '""',
@@ -141,7 +141,7 @@ const Movies = () => {
             px="3"
             py="1"
             color={sortBy !== "revenue.desc" ? "gray.500" : "white"}
-            bg={sortBy === "revenue.desc" ? "gray.800" : ""}
+            // bg={sortBy === "revenue.desc" ? "gray.800" : ""}
             transition="all 0.3s ease-in-out"
             _after={{
               content: '""',

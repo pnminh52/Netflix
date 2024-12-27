@@ -50,7 +50,7 @@ const Home = () => {
 
   return (
     <Container maxW={"container.xl"}>
-      <Flex alignItems={"baseline"} gap={"4"} my={"10"}>
+      <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
         <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
           Trending
         </Heading>
@@ -61,7 +61,7 @@ const Home = () => {
             px="3"
             py="1"
             color={`${timeWindow != "day" ? "gray.500" : "white"}`}
-            bg={`${timeWindow === "day" ? "gray.800" : ""}`}
+            // bg={`${timeWindow === "day" ? "gray.800" : ""}`}
             transition="all 0.3s ease-in-out"
             onClick={() => setTimeWindow("day")}
             _after={{
@@ -83,7 +83,7 @@ const Home = () => {
             px="3"
             py="1"
             color={`${timeWindow != "week" ? "gray.500" : "white"}`}
-            bg={`${timeWindow === "week" ? "gray.800" : ""}`}
+            // bg={`${timeWindow === "week" ? "gray.800" : ""}`}
             transition="all 0.3s ease-in-out"
             onClick={() => setTimeWindow("week")}
             _after={{
