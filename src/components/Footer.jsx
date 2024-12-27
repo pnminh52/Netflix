@@ -3,7 +3,7 @@ import { Box, Text, Link, Stack, Container } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Container mt={4} maxW={"container.xl"}
+    <Container maxW={"container.xl"}
       as="footer"
       bg="black"
       color="white"

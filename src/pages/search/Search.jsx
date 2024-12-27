@@ -41,11 +41,13 @@ const Search = () => {
 
   return (
     <Container maxW={"container.xl"}>
-      <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={0}>
-        <Heading fontSize={"lg"} fontWeight={"medium"}>
+     <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
+     <Heading fontSize={"lg"} fontWeight={"medium"}>
           Search
         </Heading>
-      </Flex>
+     </Flex>
+        
+ 
 
       <form onSubmit={handleSearch}>
         <Input
@@ -69,7 +71,8 @@ const Search = () => {
           as="h3"
           fontSize={"sm"}
           fontWeight={"thin"}
-          mt="6"
+          mt="5"
+          
         >
           No results found
         </Heading>
