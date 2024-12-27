@@ -7,17 +7,10 @@ import {
   Button,
   Grid,
   Card,
-  position,
-  CloseButton,
-  useDisclosure,
-  IconButton,
 } from "@chakra-ui/react";
 import "../css/index.css";
 import React, { useState } from "react";
-import App from "./../App";
-
 const Netflix = () => {
-  const { isOpen, onToggle } = useDisclosure();
   const [openCard, setOpenCard] = useState(null);
 
   const toggleCard = (cardNumber) => {
@@ -103,7 +96,7 @@ const Netflix = () => {
             templateColumns={"repeat(auto-fit, minmax(300px, 1fr))"}
             justifyItems="center"
             gap={4}
-            minHeight={"340px"}
+            minHeight={"320px"}
           >
             {/* Card 1 */}
             <Card class="card">
@@ -1192,29 +1185,34 @@ const Netflix = () => {
                 borderRadius={0}
               >
                 <Text>
-                The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.
+                  The Netflix Kids experience is included in your membership to
+                  give parents control while kids enjoy family-friendly TV shows
+                  and movies in their own space.
                 </Text>
                 <Text mt={2}>
-                Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.                </Text>
+                  Kids profiles come with PIN-protected parental controls that
+                  let you restrict the maturity rating of content kids can watch
+                  and block specific titles you don’t want kids to see.{" "}
+                </Text>
               </Box>
             )}
           </Grid>
         </Box>
-        <Box mt={6}>
         <Button
-              _hover={"none"}
-              bg={"red"}
-              borderRadius={0}
-              color={"white"}
-              px={[6, 8]}
-              py={[3, 4]}
-              _active={{
-                bg: "red",
-              }}
-            >
-              Finish Sign-up
-            </Button>
-        </Box>
+          _hover={"none"}
+          bg={"red"}
+          mt={4}
+          borderRadius={0}
+          color={"white"}
+          px={[6, 8]}
+          py={[3, 4]}
+          _active={{
+            bg: "red",
+          }}
+          mb={4}
+        >
+          Finish Sign-up
+        </Button>
       </Container>
     </div>
   );

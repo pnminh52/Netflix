@@ -16,8 +16,8 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
-  const [activePage, setActivePage] = useState(1);
-  const [totalPages, setTotalPage] = useState(1);
+  // const [activePage, setActivePage] = useState(1);
+  // const [totalPages, setTotalPage] = useState(1);
   useEffect(() => {
     setLoading(true);
     fetchTrending(timeWindow)
