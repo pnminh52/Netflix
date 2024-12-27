@@ -42,7 +42,7 @@ const Search = () => {
   return (
     <Container maxW={"container.xl"}>
       <Flex alignItems={"baseline"} gap={"4"} my={"10"}>
-        <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
+        <Heading fontSize={"lg"} fontWeight={"medium"}>
           Search
         </Heading>
       </Flex>

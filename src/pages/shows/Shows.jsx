@@ -36,8 +36,8 @@ const Shows = () => {
   return (
     <Container maxW={"container.xl"}>
       <Flex alignItems={"baseline"} gap={"4"} my="10" mt={"0"}>
-        <Heading as="h2" fontSize={"md"} textTransform={"uppercase"}>
-          Discover TV Shows
+        <Heading fontSize={"lg"} fontWeight={"medium"}>
+          Discover TV-Shows
         </Heading>
 
         <Flex alignItems={"center"} gap={"0"} borderRadius={"10px"}>
@@ -104,31 +104,6 @@ const Shows = () => {
             }}
           >
             Vote
-          </Box>
-          <Box
-            position="relative"
-            onClick={() => {
-              setActivePage(1);
-              setSortBy("vote_average.desc");
-            }}
-            as="button"
-            px="3"
-            py="1"
-            color={sortBy !== "vote_average.desc" ? "gray.500" : "white"}
-            // bg={sortBy === "vote_average.desc" ? "gray.800" : ""}
-            transition="all 0.3s ease-in-out"
-            _after={{
-              content: '""',
-              position: "absolute",
-              bottom: "0",
-              left: sortBy === "vote_average.desc" ? "0" : "50%",
-              width: sortBy === "vote_average.desc" ? "100%" : "0",
-              height: "2px",
-              backgroundColor: "red",
-              transition: "all 0.3s ease-in-out",
-            }}
-          >
-            Rating
           </Box>
           <Box
             position="relative"

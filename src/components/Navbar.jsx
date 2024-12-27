@@ -102,7 +102,7 @@ const Navbar = () => {
               </svg>
             </Box>
           </Link>
-
+          {/* Laptop layout */}
           <Flex
             gap="4"
             alignItems={"center"}
@@ -154,6 +154,7 @@ const Navbar = () => {
               <DrawerOverlay />
               <DrawerContent bg={"black"}>
                 <DrawerCloseButton />
+                {/* Mobile layout */}
                 <DrawerHeader>
                   {user ? (
                     <Flex cursor={"pointer"} alignItems="center" gap="2">
@@ -171,7 +172,6 @@ const Navbar = () => {
                     />
                   )}
                 </DrawerHeader>
-
                 <DrawerBody>
                   <Flex flexDirection={"column"} gap={"4"} onClick={onClose}>
                     <Link to="/homepage">Home</Link>
@@ -182,12 +182,12 @@ const Navbar = () => {
                         <Link to="/watchlist">Watchlist</Link>
                         <Button
                           mt={2}
-                          border={"1px solid red.600"}
-                          bg={"red.600"}
+                          border={"1px solid red"}
+                          bg={"red"}
                           borderRadius={0}
                           textColor={"white"}
                           onClick={logout}
-                          _hover={{ bg: "red.600" }}
+                          _hover={{ bg: "red" }}
                         >
                           Logout
                         </Button>
@@ -195,12 +195,12 @@ const Navbar = () => {
                     ) : (
                       <Button
                         mt={2}
-                        border={"1px solid red.600"}
-                        bg={"red.600"}
+                        border={"1px solid red"}
+                        bg={"red"}
                         borderRadius={0}
                         textColor={"white"}
                         onClick={handleGoogleLogin}
-                        _hover={{ bg: "red.600" }}
+                        _hover={{ bg: "red" }}
                       >
                         Login
                       </Button>
