@@ -87,7 +87,7 @@ const Netflix = () => {
           </div>
         </Box>
       </Flex>
-      <Container maxW={"container.xl"} px={4}>
+      <Container mb={2} maxW={"container.xl"} px={4}>
         <Box>
           <Heading fontSize={"2xl"} fontWeight={"medium"}>
             More Reasons to Join
@@ -1201,10 +1201,10 @@ const Netflix = () => {
             )}
           </Grid>
         </Box>
-        <Button
+        {/* <Button
           _hover={"none"}
           bg={"red"}
-          mt={4}
+          mt={2}
           borderRadius={0}
           color={"white"}
           px={[6, 8]}
@@ -1215,7 +1215,7 @@ const Netflix = () => {
           mb={4}
         >
           Finish Sign-up
-        </Button>
+        </Button> */}
       </Container>
     </div>
   );

@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 const PaginationComponent = ({ activePage, totalPages, setActivePage }) => {
   return (
     <>
-      <Flex mt={4} gap={2} alignItems={"center"}>
-        <Flex gap={2} maxW={"250px"} my={10}>
+      <Flex mt={7} mb={4} gap={2} alignItems={"center"}>
           <Button
             borderRadius={"0"}
             onClick={() => setActivePage(activePage - 1)}
@@ -20,7 +19,7 @@ const PaginationComponent = ({ activePage, totalPages, setActivePage }) => {
           >
             Next
           </Button>
-        </Flex>
+      
         <Flex gap={1}>
           <Text>{activePage}</Text>
           <Text>of</Text>
