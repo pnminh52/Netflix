@@ -46,7 +46,7 @@ const Netflix = () => {
             color={"white"}
             textAlign={"center"}
             px={4}
-            zIndex={1}
+            zIndex={0}
           >
             <Heading
               textTransform={"uppercase"}
@@ -95,7 +95,7 @@ const Netflix = () => {
             minHeight={"340px"}
           >
             {/* Card 1 */}
-            <Card class="card">
+            <Card class="card" >
               <Box>
                 <Text fontSize={"2xl"} color={"white"}>
                   Enjoy on your TV
