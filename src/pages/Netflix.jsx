@@ -8,10 +8,21 @@ import {
   Grid,
   Card,
   position,
+  CloseButton,
+  useDisclosure,
+  IconButton,
 } from "@chakra-ui/react";
 import "../css/index.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import App from "./../App";
+
 const Netflix = () => {
+  const { isOpen, onToggle } = useDisclosure();
+  const [openCard, setOpenCard] = useState(null);
+
+  const toggleCard = (cardNumber) => {
+    setOpenCard(openCard === cardNumber ? null : cardNumber);
+  };
   return (
     <div>
       <Flex alignItems={"baseline"}>
@@ -95,7 +106,7 @@ const Netflix = () => {
             minHeight={"340px"}
           >
             {/* Card 1 */}
-            <Card class="card" >
+            <Card class="card">
               <Box>
                 <Text fontSize={"2xl"} color={"white"}>
                   Enjoy on your TV
@@ -399,9 +410,7 @@ const Netflix = () => {
               </svg>
             </Card>
             {/* Card 3 */}
-            <Card 
-             class="card"
-            >
+            <Card class="card">
               <Box>
                 <Text fontSize={"xl"} color={"white"}>
                   Watch everywhere
@@ -593,9 +602,7 @@ const Netflix = () => {
               </svg>
             </Card>
             {/* Card 4 */}
-            <Card
-             class="card"
-            >
+            <Card class="card">
               <Box>
                 <Text fontSize={"xl"} color={"white"}>
                   Create profiles for kids
@@ -804,9 +811,409 @@ const Netflix = () => {
               </svg>
             </Card>
           </Grid>
-          <Heading fontSize={"lg"} mb={4} fontWeight={"medium"}>
+          <Heading fontSize={"2xl"} mt={6} mb={4} fontWeight={"medium"}>
             Frequently Asked Questions
           </Heading>
+          <Grid>
+            {/* Card 1 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+            >
+              <Box
+                onClick={() => toggleCard(1)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                Enjoy on your TV
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 1 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                  Netflix is a streaming service that offers a wide variety of
+                  award-winning TV shows, movies, anime, documentaries, and more
+                  on thousands of internet-connected devices.
+                </Text>
+                <Text mt={2}>
+                  You can watch as much as you want, whenever you want without a
+                  single commercial – all for one low monthly price. There's
+                  always something new to discover and new TV shows and movies
+                  are added every week!
+                </Text>
+              </Box>
+            )}
+            {/* Card 2 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+              onClick={() => toggleCard(2)}
+            >
+              <Box
+                onClick={() => toggleCard(1)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                How much does Netflix cost?
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 2 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                  Netflix is a streaming service that offers a wide variety of
+                  award-winning TV shows, movies, anime, documentaries, and more
+                  on thousands of internet-connected devices.
+                </Text>
+                <Text mt={2}>
+                  You can watch as much as you want, whenever you want without a
+                  single commercial – all for one low monthly price. There's
+                  always something new to discover and new TV shows and movies
+                  are added every week!
+                </Text>
+              </Box>
+            )}
+            {/* Card 3 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+            >
+              <Box
+                onClick={() => toggleCard(3)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                Where can I watch?
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 3 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                  Watch anywhere, anytime. Sign in with your Netflix account to
+                  watch instantly on the web at netflix.com from your personal
+                  computer or on any internet-connected device that offers the
+                  Netflix app, including smart TVs, smartphones, tablets,
+                  streaming media players and game consoles.
+                </Text>
+                <Text mt={2}>
+                  You can also download your favorite shows with the iOS or
+                  Android app. Use downloads to watch while you're on the go and
+                  without an internet connection. Take Netflix with you
+                  anywhere.
+                </Text>
+              </Box>
+            )}
+            {/* Card 4 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+            >
+              <Box
+                onClick={() => toggleCard(4)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                How do I cancel?
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 4 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                  Netflix is flexible. There are no pesky contracts and no
+                  commitments. You can easily cancel your account online in two
+                  clicks. There are no cancellation fees – start or stop your
+                  account anytime.{" "}
+                </Text>
+              </Box>
+            )}
+            {/* Card 5 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+            >
+              <Box
+                onClick={() => toggleCard(5)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                What can I watch on Netflix?
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 5 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                  Netflix has an extensive library of feature films,
+                  documentaries, TV shows, anime, award-winning Netflix
+                  originals, and more. Watch as much as you want, anytime you
+                  want.
+                </Text>
+              </Box>
+            )}
+            {/* Card 6 */}
+            <Card
+              _hover={{
+                bg: "gray.700",
+                transition: " 0.3s ease-in-out ",
+              }}
+              cursor={"pointer"}
+              mb={1}
+              p={4}
+              bg={"#2D2D2D"}
+              minHeight={"40px"}
+              borderRadius={0}
+            >
+              <Box
+                onClick={() => toggleCard(6)}
+                display={"flex"}
+                justifyContent={"flex-start"}
+                alignItems={"center"}
+                fontSize={"xl"}
+                color={"white"}
+              >
+                Is Netflix good for kids?
+                <svg
+                  cursor="pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  data-icon="PlusStandard"
+                  aria-hidden="true"
+                  className="elj7tfr3 default-ltr-cache-jh13go-Icon-StyledAccordionIcon e164gv2o5"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11 11V2H13V11H22V13H13V22H11V13H2V11H11Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Box>
+            </Card>
+            {openCard === 6 && (
+              <Box
+                mb={0.5}
+                bg="#333"
+                color="white"
+                p={4}
+                boxShadow="lg"
+                borderRadius={0}
+              >
+                <Text>
+                The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.
+                </Text>
+                <Text mt={2}>
+                Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.                </Text>
+              </Box>
+            )}
+          </Grid>
+        </Box>
+        <Box mt={6}>
+        <Button
+              _hover={"none"}
+              bg={"red"}
+              borderRadius={0}
+              color={"white"}
+              px={[6, 8]}
+              py={[3, 4]}
+              _active={{
+                bg: "red",
+              }}
+            >
+              Finish Sign-up
+            </Button>
         </Box>
       </Container>
     </div>
