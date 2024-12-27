@@ -159,7 +159,7 @@ const DetailsPage = () => {
       >
         <Container maxW={"container.xl"}>
           <Flex
-            mt={"4"}
+            mt={"1"}
             alignItems={"center"}
             gap="10"
             flexDirection={{ base: "column", md: "row" }}
@@ -177,7 +177,7 @@ const DetailsPage = () => {
                 </Text>
               </Heading>
 
-              <Flex alignItems={"center"} gap={"4"} mt={1} mb={5}>
+              <Flex alignItems={"center"} gap={"4"} mt={0} mb={5}>
                 <Flex alignItems={"center"}>
                   <CalendarIcon mr={2} color={"gray.400"} />
                   <Text fontSize={"sm"}>

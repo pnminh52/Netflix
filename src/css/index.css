@@ -77,3 +77,31 @@
     left: -60%;
   }
 }
+.card {
+  padding: 12px;
+  background: #1E182E;
+  border-radius: 0.375rem; 
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+}
+
+.card::before {
+  position: absolute;
+  background: radial-gradient(var(--clr), transparent, transparent);
+  width: 300px;
+  height: 200px;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.5s top 0s, left 0s;
+}
+.card:hover::before{
+  opacity: 1;
+}

@@ -10,7 +10,7 @@ import {
   position,
 } from "@chakra-ui/react";
 import "../css/index.css";
-
+import React, { useState, useEffect } from "react";
 const Netflix = () => {
   return (
     <div>
@@ -85,30 +85,18 @@ const Netflix = () => {
           <Heading fontSize={"2xl"} fontWeight={"medium"}>
             More Reasons to Join
           </Heading>
+
           <Grid
-          mb={4}
+            mb={4}
             mt={4}
             templateColumns={"repeat(auto-fit, minmax(300px, 1fr))"}
             justifyItems="center"
             gap={4}
-            minHeight={"300px"}
+            minHeight={"340px"}
           >
-             {/* Card 1 */}
-            <Card
-              borderRadius={0}
-              p={4}
-              bg={"#1E182E"}
-              // bgGradient="radial(#1E182E, #1F1220)"
-              rounded={"md"}
-              cursor={"pointer"}
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-              position="relative"
-              minHeight="180px"
-            >
+            {/* Card 1 */}
+            <Card class="card">
               <Box>
-                <Box>
                 <Text fontSize={"2xl"} color={"white"}>
                   Enjoy on your TV
                 </Text>
@@ -116,7 +104,6 @@ const Netflix = () => {
                   Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
                   Blu-ray players, and more.
                 </Text>
-                </Box>
               </Box>
               <svg
                 style={{
@@ -248,28 +235,18 @@ const Netflix = () => {
               </svg>
             </Card>
             {/* Card 2 */}
-            <Card
-           borderRadius={0}
-           p={4}
-           bg={"#1E182E"}
-          //  bgGradient="radial(#1E182E, #1F1220)"
-           rounded={"md"}
-           cursor={"pointer"}
-           display="flex"
-           flexDirection="column"
-           justifyContent="space-between"
-           position="relative"
-           minHeight="180px"
-            >
+            <Card class="card">
               <Box>
-              <Text fontSize={"2xl"} color={"white"}>
-              Download your shows to watch offline
-              </Text>
-              <Text color={"gray.400"}>
-                Save your favorites easily and always have something to watch even without internet.
-              </Text>
+                <Text fontSize={"2xl"} color={"white"}>
+                  Download your shows
+                </Text>
+                <Text color={"gray.400"}>
+                  Save your favorites easily and always have something to watch
+                  even without internet.
+                </Text>
               </Box>
-              <svg style={{
+              <svg
+                style={{
                   position: "absolute",
                   bottom: "10px",
                   right: "10px",
@@ -277,7 +254,8 @@ const Netflix = () => {
                 width="72"
                 height="72"
                 viewBox="0 0 72 72"
-                fill="none"   >
+                fill="none"
+              >
                 <g id="download-core-small">
                   <path
                     id="Vector"
@@ -421,32 +399,29 @@ const Netflix = () => {
               </svg>
             </Card>
             {/* Card 3 */}
-            <Card
-        borderRadius={0}
-        p={4}
-        bg={"#1E182E"}
-        rounded={"md"}
-        cursor={"pointer"}
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        position="relative"
-        minHeight="180px"
+            <Card 
+             class="card"
             >
               <Box>
-              <Text fontSize={"xl"} color={"white"}>
-                Watch everywhere
-              </Text>
-              <Text color={"gray.400"}>
-                Stream unlimited movies and TV shows on your phone, tablet,
-                laptop, and TV without paying more.
-              </Text>
+                <Text fontSize={"xl"} color={"white"}>
+                  Watch everywhere
+                </Text>
+                <Text color={"gray.400"}>
+                  Stream unlimited movies and TV shows on your phone, tablet,
+                  laptop, and TV without paying more.
+                </Text>
               </Box>
-              <svg style={{
+              <svg
+                style={{
                   position: "absolute",
                   bottom: "10px",
                   right: "10px",
-                }} width="72" height="72" viewBox="0 0 72 72" fill="none">
+                }}
+                width="72"
+                height="72"
+                viewBox="0 0 72 72"
+                fill="none"
+              >
                 <g id="telescope-core-small">
                   <path
                     id="Vector"
@@ -619,31 +594,28 @@ const Netflix = () => {
             </Card>
             {/* Card 4 */}
             <Card
-              borderRadius={0}
-              p={4}
-              bg={"#1E182E"}
-              rounded={"md"}
-              cursor={"pointer"}
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-              position="relative"
-              minHeight="180px"
+             class="card"
             >
               <Box>
-              <Text fontSize={"xl"} color={"white"}>
-                Create profiles for kids
-              </Text>
-              <Text color={"gray.400"}>
-                Send kids on adventures with their favorite characters in a
-                space made just for them.
-              </Text>
+                <Text fontSize={"xl"} color={"white"}>
+                  Create profiles for kids
+                </Text>
+                <Text color={"gray.400"}>
+                  Send kids on adventures with their favorite characters in a
+                  space made just for them.
+                </Text>
               </Box>
-              <svg style={{
+              <svg
+                style={{
                   position: "absolute",
                   bottom: "10px",
                   right: "10px",
-                }} width="72" height="72" viewBox="0 0 72 72" fill="none">
+                }}
+                width="72"
+                height="72"
+                viewBox="0 0 72 72"
+                fill="none"
+              >
                 <g id="profiles-core-small">
                   <path
                     id="Vector"
@@ -832,7 +804,7 @@ const Netflix = () => {
               </svg>
             </Card>
           </Grid>
-          <Heading fontSize={"lg"} fontWeight={"medium"}>
+          <Heading fontSize={"lg"} mb={4} fontWeight={"medium"}>
             Frequently Asked Questions
           </Heading>
         </Box>
