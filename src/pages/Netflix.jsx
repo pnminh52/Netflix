@@ -54,32 +54,40 @@ const Netflix = () => {
             px={4}
             zIndex={0}
           >
-            <Heading
-              textTransform={"uppercase"}
-              fontSize={["2xl", "3xl", "4xl"]}
-              mb={4}
-            >
-              Unlimited movies, 
-              <Heading>
-              TV shows, and more
-              </Heading>
-            </Heading>
-            <Text mb={4} fontSize={["sm", "md"]} fontWeight={"normal"} >
-              Starts at 70,000 ₫. Cancel anytime
-            </Text>
-            <Button
-              _hover={"none"}
-              bg={"red"}
-              borderRadius={0}
-              color={"white"}
-              px={[6, 8]}
-              py={[3, 4]}
-              _active={{
-                bg: "red",
-              }}
-            >
-              Finish Sign-up
-            </Button>
+           <Heading
+  textTransform={"uppercase"}
+  fontSize={["2xl", "3xl", "4xl"]}
+  mb={1}  
+>
+  Unlimited movies, TV shows, and more
+</Heading>
+
+<Text
+  mb={2}  
+  fontSize={["sm", "md", "lg"]} 
+  fontWeight={"normal"}
+>
+  Starts at 70,000 ₫. Cancel anytime
+</Text>
+
+<Button
+  _hover={"none"}
+  textAlign="center"
+  justifyContent="center"
+  bg={"red"}
+  borderRadius={0}
+  color={"white"}
+  px={[4, 6, 8]}  
+  py={[2, 3, 4]}  
+  _active={{
+    bg: "red",
+  }}
+  display="inline-flex"  
+  alignItems="center"   
+>
+  Finish Sign-up
+</Button>
+
           </Box>
           <div className="default-ltr-cache-dulgtd">
             <div className="curve-container">
