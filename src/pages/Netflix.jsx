@@ -52,7 +52,7 @@ const Netflix = () => {
   return (
     <div>
       <div>
-        <Flex mb={10} alignItems={"baseline"}>
+        <Flex mb={15} alignItems={"baseline"}>
           <Box position={"relative"} w={"100%"} overflow={"hidden"}>
             <Box
               position={"relative"}
