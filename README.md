@@ -1,1 +1,1 @@
-Build Netflix clone, technologies used : React, Firebase, Chakra UI, TMDB API
+Netflix clone using React, Firebase, Chakra UI, TMDB API
