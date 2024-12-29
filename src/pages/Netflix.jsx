@@ -21,7 +21,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
 import { fetchTrending } from "../services/api";
-import React, { useEffect, useState, useRef  } from "react";
+import React, { useEffect, useState, useRef } from "react";
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
     base: 3,
@@ -48,12 +48,12 @@ const Netflix = () => {
       setIsLastSlide(swiper.isEnd);
     };
     // Lắng nghe sự kiện slideChange khi component được mount
-    swiper.on('slideChange', onSlideChange);
+    swiper.on("slideChange", onSlideChange);
     // Cập nhật trạng thái ban đầu khi lần đầu render
     onSlideChange();
     // Dọn dẹp sự kiện khi component unmount
     return () => {
-      swiper.off('slideChange', onSlideChange);
+      swiper.off("slideChange", onSlideChange);
     };
   }, []); // Sử dụng mảng phụ thuộc trống để chỉ chạy 1 lần khi component mount
   // Kiểm tra trạng thái khi quay lại trang
@@ -63,7 +63,7 @@ const Netflix = () => {
       setIsFirstSlide(swiper.isBeginning);
       setIsLastSlide(swiper.isEnd);
     }
-  }, [data]); 
+  }, [data]);
 
   useEffect(() => {
     setLoading(true);
@@ -85,11 +85,10 @@ const Netflix = () => {
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
   };
-  
 
   return (
     <div>
-      <div >
+      <div>
         <Flex mb={15} alignItems={"baseline"}>
           <Box position={"relative"} w={"100%"} overflow={"hidden"}>
             <Box
@@ -139,9 +138,8 @@ const Netflix = () => {
                 textAlign="center"
                 justifyContent="center"
                 bg={"red"}
-                
                 color={"white"}
-                px={[4, 5]}
+                px={[4, 8]}
                 py={[2, 6]}
                 _active={{
                   bg: "red",
@@ -150,16 +148,28 @@ const Netflix = () => {
                 display="inline-flex"
                 alignItems="center"
               >
-                  <Text fontSize={"xl"} fontWeight={"none"}>
+                <Text fontSize={"xl"} fontWeight={"none"}>
                   Finish Sign-up
-                  </Text>
-                 
-                  <Text>
-                  <svg color="white" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
- </svg>
-                  </Text>
-             
+                </Text>
+
+                {/* <Text>
+                  <svg
+                    color="white"
+                    width="40px"
+                    height="40px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 18L15 12L9 6"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </Text> */}
               </Button>
             </Box>
             <div className="default-ltr-cache-dulgtd">
@@ -176,80 +186,102 @@ const Netflix = () => {
               Trending Now
             </Heading>
             <Swiper
-      modules={[Navigation, Pagination]}
-      spaceBetween={10}
-      slidesPerView={slidesPerView}
-      navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
-      className="mySwiper"
-      ref={swiperRef}
-    >
-      {data?.map((item) => (
-        <SwiperSlide key={item.id} className="swiper-slide">
-          <Fade in={!loading} transition="all 0.3s ease-in-out">
-            {loading ? (
-              <div className="skeleton-container">
-                <Skeleton height={300} width="200px" />
-              </div>
-            ) : (
-              <SlideComponent item={item} type={item.media_type} />
-            )}
-          </Fade>
-        </SwiperSlide>
-      ))}
+              modules={[Navigation, Pagination]}
+              spaceBetween={10}
+              slidesPerView={slidesPerView}
+              navigation={{
+                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-button-next",
+              }}
+              className="mySwiper"
+              ref={swiperRef}
+            >
+              {data?.map((item) => (
+                <SwiperSlide key={item.id} className="swiper-slide">
+                  <Fade in={!loading} transition="all 0.3s ease-in-out">
+                    {loading ? (
+                      <div className="skeleton-container">
+                        <Skeleton height={300} width="200px" />
+                      </div>
+                    ) : (
+                      <SlideComponent item={item} type={item.media_type} />
+                    )}
+                  </Fade>
+                </SwiperSlide>
+              ))}
 
-      <Button
-        onClick={prevSlide}
-        bg={'black'}
-        color={'black'}
-        position="absolute"
-        top="50%"
-        left={'0'}
-        width={'50px'}
-        borderLeftRadius={0}
-        roundedRight={'50%'}
-        height={'50px'}
-        transform="translateY(-50%)"
-        _hover={'none'}
-        _active={'none'}
-        zIndex="1"
-        aria-label="Previous slide"
-        style={{ display: isFirstSlide ? 'none' : 'block' }} // Ẩn button khi ở slide đầu tiên
-      >
-        <Text color={'white'}>
-          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Text>
-      </Button>
+              <Button
+                onClick={prevSlide}
+                bg="black"
+                textColor="white"
+                position="absolute"
+                top="50%"
+                left="2"
+                w="12"
+                h="12"
+                rounded="full"
+                transform="translateY(-50%)"
+                zIndex="10"
+                display={isFirstSlide ? "none" : "flex"}
+                alignItems="center"
+                justifyContent="center"
+                _hover={{ bg: "gray.700", textColor: "white" }}
+                _active={{ bg: "gray.600" }}
+                aria-label="Previous slide"
+              >
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 18L9 12L15 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Button>
 
-      <Button
-        onClick={nextSlide}
-        bg={'black'}
-        color={'black'}
-        position="absolute"
-        top="50%"
-        right={'0'}
-        width={'50px'}
-        borderRightRadius={0}
-        roundedLeft={'50%'}
-        height={'50px'}
-        transform="translateY(-50%)"
-        _hover={'none'}
-        _active={'none'}
-        zIndex="1"
-        aria-label="Next slide"
-        style={{ display: isLastSlide ? 'none' : 'block' }} // Ẩn button khi ở slide cuối cùng
-      >
-        <svg color="white" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </Button>
-    </Swiper>
+              <Button
+                onClick={nextSlide}
+                bg="black"
+                textColor="white"
+                position="absolute"
+                top="50%"
+                right="2"
+                w="12"
+                h="12"
+                rounded="full"
+                transform="translateY(-50%)"
+                zIndex="10"
+                display={isLastSlide ? "none" : "flex"}
+                alignItems="center"
+                justifyContent="center"
+                _hover={{ bg: "gray.700", textColor: "white" }}
+                _active={{ bg: "gray.600" }}
+                aria-label="Next slide"
+              >
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Button>
+            </Swiper>
 
-
-          <Box>
-     
-          </Box>
+            <Box></Box>
           </Box>
           <Box>
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
