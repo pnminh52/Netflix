@@ -72,7 +72,7 @@ const Netflix = () => {
             </Box>
             <Box
               position={"absolute"}
-              top={0}
+              top={'-15'}
               left={0}
               w={"100%"}
               h={"100%"}
@@ -87,29 +87,33 @@ const Netflix = () => {
               zIndex={0}
             >
               <Heading
+              
                 textTransform={"uppercase"}
                 fontSize={["2xl", "3xl", "4xl"]}
-                mb={1}
+                mb={2}
               >
                 Unlimited movies, TV shows, and more
               </Heading>
 
-              <Text mb={2} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
+              <Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
                 Starts at 70,000 ₫. Cancel anytime
               </Text>
 
               <Button
-                _hover={"none"}
+                _hover={
+                  "none"
+                }
                 textAlign="center"
                 justifyContent="center"
                 bg={"red"}
-                borderRadius={0}
+                fontSize={'lg'}
                 color={"white"}
-                px={[4, 6, 8]}
-                py={[2, 3, 4]}
+                px={[6, 8]}
+                py={[4, 6]}
                 _active={{
                   bg: "red",
                 }}
+                borderRadius={'md'}
                 display="inline-flex"
                 alignItems="center"
               >
