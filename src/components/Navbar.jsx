@@ -28,9 +28,9 @@ const Navbar = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      console.log("success");
+      // console.log("success");
     } catch (error) {
-      console.log("errr", error);
+      // console.log("errr", error);
     }
   };
 
@@ -127,6 +127,9 @@ const Navbar = () => {
                 <MenuList mt={2} borderRadius={0} bg={'black'} >
                   <Link to="/watchlist">
                     <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Watchlist</MenuItem>
+                  </Link>
+                  <Link to="/Favorite">
+                    <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Favorite</MenuItem>
                   </Link>
                   <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}} bg={'black'} onClick={logout}>Logout</MenuItem>
                 </MenuList>

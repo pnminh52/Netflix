@@ -14,6 +14,7 @@ import Shows from "./pages/shows/Shows.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
 import Watchlist from "./pages/Watchlist.jsx";
 import Netflix from "./pages/Netflix.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",

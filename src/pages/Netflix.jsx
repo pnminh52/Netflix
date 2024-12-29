@@ -130,26 +130,25 @@ const Netflix = () => {
               Trending Now
             </Heading>
             <Swiper
-  modules={[Navigation, Pagination]}
-  spaceBetween={10}
-  slidesPerView={slidesPerView}
-
-  className="mySwiper"
->
-  {data?.map((item) => (
-    <SwiperSlide key={item.id} className="swiper-slide">
-      <Fade in={!loading} transition="all 0.3s ease-in-out">
-        {loading ? (
-          <div className="skeleton-container">
-            <Skeleton height={300} width="200px" />
-          </div>
-        ) : (
-          <SlideComponent item={item} type={item.media_type} />
-        )}
-      </Fade>
-    </SwiperSlide>
-  ))}
-</Swiper>
+              modules={[Navigation, Pagination]}
+              spaceBetween={10}
+              slidesPerView={slidesPerView}
+              className="mySwiper"
+            >
+              {data?.map((item) => (
+                <SwiperSlide key={item.id} className="swiper-slide">
+                  <Fade in={!loading} transition="all 0.3s ease-in-out">
+                    {loading ? (
+                      <div className="skeleton-container">
+                        <Skeleton height={300} width="200px" />
+                      </div>
+                    ) : (
+                      <SlideComponent item={item} type={item.media_type} />
+                    )}
+                  </Fade>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </Box>
           <Box>
             <Heading fontSize={"2xl"} fontWeight={"medium"}>
