@@ -34,10 +34,37 @@ const Netflix = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
+  const [isFirstSlide, setIsFirstSlide] = useState(true);
+  const [isLastSlide, setIsLastSlide] = useState(false);
   const swiperRef = useRef(null);
   const toggleCard = (cardNumber) => {
     setOpenCard(openCard === cardNumber ? null : cardNumber);
   };
+  useEffect(() => {
+    const swiper = swiperRef.current.swiper;
+    // Lắng nghe sự kiện slideChange để cập nhật trạng thái của slide
+    const onSlideChange = () => {
+      setIsFirstSlide(swiper.isBeginning);
+      setIsLastSlide(swiper.isEnd);
+    };
+    // Lắng nghe sự kiện slideChange khi component được mount
+    swiper.on('slideChange', onSlideChange);
+    // Cập nhật trạng thái ban đầu khi lần đầu render
+    onSlideChange();
+    // Dọn dẹp sự kiện khi component unmount
+    return () => {
+      swiper.off('slideChange', onSlideChange);
+    };
+  }, []); // Sử dụng mảng phụ thuộc trống để chỉ chạy 1 lần khi component mount
+  // Kiểm tra trạng thái khi quay lại trang
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current.swiper;
+      setIsFirstSlide(swiper.isBeginning);
+      setIsLastSlide(swiper.isEnd);
+    }
+  }, [data]); 
+
   useEffect(() => {
     setLoading(true);
     fetchTrending(timeWindow)
@@ -58,10 +85,11 @@ const Netflix = () => {
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
   };
+  
 
   return (
     <div>
-      <div>
+      <div >
         <Flex mb={15} alignItems={"baseline"}>
           <Box position={"relative"} w={"100%"} overflow={"hidden"}>
             <Box
@@ -143,75 +171,80 @@ const Netflix = () => {
           </Box>
         </Flex>
         <Container mb={2} maxW={"container.xl"} px={4}>
-          <Box mt={4} mb={20}>
+          <Box mt={0} mb={20}>
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
             <Swiper
-        modules={[Navigation, Pagination]}
-        spaceBetween={10}
-        slidesPerView={slidesPerView}
-        navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}        className="mySwiper"
-        ref={swiperRef}
-      >
-        {data?.map((item) => (
-          <SwiperSlide key={item.id} className="swiper-slide">
-            <Fade in={!loading} transition="all 0.3s ease-in-out">
-              {loading ? (
-                <div className="skeleton-container">
-                  <Skeleton height={300} width="200px" />
-                </div>
-              ) : (
-                <SlideComponent item={item} type={item.media_type} />
-              )}
-            </Fade>
-          </SwiperSlide>
-        ))}
-              <Button
+      modules={[Navigation, Pagination]}
+      spaceBetween={10}
+      slidesPerView={slidesPerView}
+      navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
+      className="mySwiper"
+      ref={swiperRef}
+    >
+      {data?.map((item) => (
+        <SwiperSlide key={item.id} className="swiper-slide">
+          <Fade in={!loading} transition="all 0.3s ease-in-out">
+            {loading ? (
+              <div className="skeleton-container">
+                <Skeleton height={300} width="200px" />
+              </div>
+            ) : (
+              <SlideComponent item={item} type={item.media_type} />
+            )}
+          </Fade>
+        </SwiperSlide>
+      ))}
+
+      <Button
         onClick={prevSlide}
-bg={'black'}
-color={'black'}
+        bg={'black'}
+        color={'black'}
         position="absolute"
         top="50%"
         left={'0'}
-        width={'60px'}
+        width={'50px'}
         borderLeftRadius={0}
         roundedRight={'50%'}
-        height={'60px'}
+        height={'50px'}
         transform="translateY(-50%)"
-_hover={'none'}
-_active={'none'}
+        _hover={'none'}
+        _active={'none'}
         zIndex="1"
         aria-label="Previous slide"
+        style={{ display: isFirstSlide ? 'none' : 'block' }} // Ẩn button khi ở slide đầu tiên
       >
-   <Text color={'white'}><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
- </svg></Text>
+        <Text color={'white'}>
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Text>
       </Button>
 
       <Button
         onClick={nextSlide}
         bg={'black'}
         color={'black'}
-                position="absolute"
-                top="50%"
-                right={'0'}
-                width={'60px'}
-                borderRightRadius={0}
-                roundedLeft={'50%'}
-                height={'60px'}
-                transform="translateY(-50%)"
+        position="absolute"
+        top="50%"
+        right={'0'}
+        width={'50px'}
+        borderRightRadius={0}
+        roundedLeft={'50%'}
+        height={'50px'}
+        transform="translateY(-50%)"
         _hover={'none'}
         _active={'none'}
-                zIndex="1"
-                aria-label="Previous slide"
-              
+        zIndex="1"
+        aria-label="Next slide"
+        style={{ display: isLastSlide ? 'none' : 'block' }} // Ẩn button khi ở slide cuối cùng
       >
         <svg color="white" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
- </svg>
+          <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </Button>
-      </Swiper>
+    </Swiper>
 
 
           <Box>
