@@ -3,14 +3,34 @@ import { useFirestore } from "../services/firestore";
 import { useAuth } from "../context/useAuth";
 import {Box, Container, Flex, Grid, Heading, Spinner, Text } from "@chakra-ui/react";
 import WatchlistCard from "../components/WatchlistCard";
+import PaginationComponent from "../components/PaginationComponent";
+import { fetchTrending } from "../services/api";
 
 const Watchlist = () => {
   const { getWatchlist } = useFirestore();
   const { user } = useAuth();
+  const [data, setData] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPage] = useState(1);
   const [count, setCount] = useState(0);
-
+  useEffect(() => {
+    fetchTrending(activePage)
+      .then((res) => {
+        console.log(res, "res");
+        setMovies(res?.results);
+        setActivePage(res?.page);
+        setTotalPage(res?.total_pages);
+      })
+      .catch((err) => {
+        console.log(err, "err");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [activePage]);
+  console.log(data, "data");
   useEffect(() => {
     if (user?.uid) {
       getWatchlist(user?.uid)
@@ -30,11 +50,23 @@ const Watchlist = () => {
 
   return (
     <Container maxW={"container.xl"}>
-            <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
+            <Flex alignItems={"baseline"} my={"10"} mt={"0"}>
 
-        <Heading fontSize={"lg"} fontWeight={"medium"}>
-          Watchlist
-        </Heading>
+        <Flex gap={2}>
+          <Text  fontSize={"lg"} fontWeight={"medium"}>Watchlist</Text>
+          {count > 0 && !isLoading && (
+          <Heading
+            textAlign={"left"}
+            as="h3"
+            fontSize={"sm"}
+            fontWeight={"thin"}
+            mt={1}
+          
+          >
+            <Text>You have {count} movie{count > 1 ? 's' : ''} in your watchlist</Text>
+          </Heading>
+        )}
+        </Flex>
         </Flex>
         {count === 0 && !isLoading && (
           <Heading
@@ -48,18 +80,7 @@ const Watchlist = () => {
           </Heading>
         )}
 
-        {count > 0 && !isLoading && (
-          <Heading
-            textAlign={"left"}
-            as="h3"
-            fontSize={"sm"}
-            fontWeight={"thin"}
-            mt={2}
-            mb={4}
-          >
-            <Text>You have {count} movie{count > 1 ? 's' : ''} in your watchlist</Text>
-          </Heading>
-        )}
+
       {isLoading && (
         <Flex justify={"center"} >
           {/* <Spinner size={"xl"} color="red" /> */}
@@ -90,7 +111,12 @@ const Watchlist = () => {
           ))}
         </Grid>
       )}
-      <Box mb={4}></Box>
+      {/* <Box mb={4}></Box> */}
+            <PaginationComponent
+              activePage={activePage}
+              totalPages={totalPages}
+              setActivePage={setActivePage}
+            />
     </Container>
   );
 };
