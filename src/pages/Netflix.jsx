@@ -21,7 +21,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
 import { fetchTrending } from "../services/api";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef  } from "react";
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
     base: 3,
@@ -34,6 +34,7 @@ const Netflix = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
+  const swiperRef = useRef(null);
   const toggleCard = (cardNumber) => {
     setOpenCard(openCard === cardNumber ? null : cardNumber);
   };
@@ -50,6 +51,13 @@ const Netflix = () => {
         setLoading(false);
       });
   }, [timeWindow]);
+  const nextSlide = () => {
+    swiperRef.current.swiper.slideNext();
+  };
+
+  const prevSlide = () => {
+    swiperRef.current.swiper.slidePrev();
+  };
 
   return (
     <div>
@@ -89,38 +97,41 @@ const Netflix = () => {
               zIndex={0}
             >
               <Heading
-                textTransform={"uppercase"}
-                fontSize={["2xl", "3xl", "4xl"]}
+                textTransform={"none"}
+                fontSize={["3xl", "4xl", "5xl"]}
                 mb={2}
               >
                 Unlimited movies, TV shows, and more
               </Heading>
               <Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
-                Starts at 70,000 ₫. Cancel anytime
+                Starts at 70,000 ₫. Cancel anytime.
               </Text>
               <Button
                 _hover={"none"}
                 textAlign="center"
                 justifyContent="center"
                 bg={"red"}
-                fontSize={"lg"}
+                
                 color={"white"}
-                px={[4, 8]}
+                px={[4, 5]}
                 py={[2, 6]}
                 _active={{
                   bg: "red",
                 }}
-                borderRadius={"md"}
+                borderRadius={"4px"}
                 display="inline-flex"
                 alignItems="center"
               >
-                <Box display="flex" alignItems="center" justifyContent="center">
+                  <Text fontSize={"xl"} fontWeight={"none"}>
                   Finish Sign-up
-                  {/* <Stat ml={2}>
-                         <StatArrow as="span" transform="rotate(-90deg)" color="white" />
-                      </Stat> */}
-                  <ArrowForwardIcon color={"white"} ml={1} />
-                </Box>
+                  </Text>
+                 
+                  <Text>
+                  <svg color="white" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+ </svg>
+                  </Text>
+             
               </Button>
             </Box>
             <div className="default-ltr-cache-dulgtd">
@@ -132,33 +143,83 @@ const Netflix = () => {
           </Box>
         </Flex>
         <Container mb={2} maxW={"container.xl"} px={4}>
-          <Box mt={6} mb={20}>
-            <Heading mb={4} fontSize={"2xl"} fontWeight={"medium"}>
+          <Box mt={4} mb={20}>
+            <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
             <Swiper
-              modules={[Navigation, Pagination]}
-              spaceBetween={10}
-              slidesPerView={slidesPerView}
-              className="mySwiper"
-            >
-              {data?.map((item) => (
-                <SwiperSlide key={item.id} className="swiper-slide">
-                  <Fade in={!loading} transition="all 0.3s ease-in-out">
-                    {loading ? (
-                      <div className="skeleton-container">
-                        <Skeleton height={300} width="200px" />
-                      </div>
-                    ) : (
-                      <SlideComponent item={item} type={item.media_type} />
-                    )}
-                  </Fade>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+        modules={[Navigation, Pagination]}
+        spaceBetween={10}
+        slidesPerView={slidesPerView}
+        navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}        className="mySwiper"
+        ref={swiperRef}
+      >
+        {data?.map((item) => (
+          <SwiperSlide key={item.id} className="swiper-slide">
+            <Fade in={!loading} transition="all 0.3s ease-in-out">
+              {loading ? (
+                <div className="skeleton-container">
+                  <Skeleton height={300} width="200px" />
+                </div>
+              ) : (
+                <SlideComponent item={item} type={item.media_type} />
+              )}
+            </Fade>
+          </SwiperSlide>
+        ))}
+              <Button
+        onClick={prevSlide}
+bg={'black'}
+color={'black'}
+        position="absolute"
+        top="50%"
+        left={'0'}
+        width={'60px'}
+        borderLeftRadius={0}
+        roundedRight={'50%'}
+        height={'60px'}
+        transform="translateY(-50%)"
+_hover={'none'}
+_active={'none'}
+        zIndex="1"
+        aria-label="Previous slide"
+      >
+   <Text color={'white'}><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ </svg></Text>
+      </Button>
+
+      <Button
+        onClick={nextSlide}
+        bg={'black'}
+        color={'black'}
+                position="absolute"
+                top="50%"
+                right={'0'}
+                width={'60px'}
+                borderRightRadius={0}
+                roundedLeft={'50%'}
+                height={'60px'}
+                transform="translateY(-50%)"
+        _hover={'none'}
+        _active={'none'}
+                zIndex="1"
+                aria-label="Previous slide"
+              
+      >
+        <svg color="white" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ </svg>
+      </Button>
+      </Swiper>
+
+
+          <Box>
+     
+          </Box>
           </Box>
           <Box>
-            <Heading fontSize={"2xl"} fontWeight={"medium"}>
+            <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               More Reasons to Join
             </Heading>
 
@@ -892,7 +953,7 @@ const Netflix = () => {
                 </svg>
               </Card>
             </Grid>
-            <Heading fontSize={"2xl"} mb={4} fontWeight={"medium"}>
+            <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Frequently Asked Questions
             </Heading>
             <Grid>

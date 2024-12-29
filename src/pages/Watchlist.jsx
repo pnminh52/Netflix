@@ -53,10 +53,10 @@ const Watchlist = () => {
             <Flex alignItems={"baseline"} my={"10"} mt={"0"}>
 
         <Flex gap={2}>
-          <Text  fontSize={"lg"} fontWeight={"medium"}>Watchlist</Text>
+          <Heading  fontSize={"lg"} fontWeight={"medium"}>Watchlist</Heading>
           {count > 0 && !isLoading && (
           <Heading
-            textAlign={"left"}
+            textAlign={"right"}
             as="h3"
             fontSize={"sm"}
             fontWeight={"thin"}
