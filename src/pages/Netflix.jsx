@@ -9,8 +9,10 @@ import {
   Grid,
   Card,
   Fade,
+  Stat,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import "../css/index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules"; // Import các module cần thiết
@@ -72,7 +74,7 @@ const Netflix = () => {
             </Box>
             <Box
               position={"absolute"}
-              top={'-15'}
+              top={"-15"}
               left={0}
               w={"100%"}
               h={"100%"}
@@ -87,37 +89,38 @@ const Netflix = () => {
               zIndex={0}
             >
               <Heading
-              
                 textTransform={"uppercase"}
                 fontSize={["2xl", "3xl", "4xl"]}
                 mb={2}
               >
                 Unlimited movies, TV shows, and more
               </Heading>
-
               <Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
                 Starts at 70,000 ₫. Cancel anytime
               </Text>
-
               <Button
-                _hover={
-                  "none"
-                }
+                _hover={"none"}
                 textAlign="center"
                 justifyContent="center"
                 bg={"red"}
-                fontSize={'lg'}
+                fontSize={"lg"}
                 color={"white"}
-                px={[6, 8]}
-                py={[4, 6]}
+                px={[4, 8]}
+                py={[2, 6]}
                 _active={{
                   bg: "red",
                 }}
-                borderRadius={'md'}
+                borderRadius={"md"}
                 display="inline-flex"
                 alignItems="center"
               >
-                Finish Sign-up
+                <Box display="flex" alignItems="center" justifyContent="center">
+                  Finish Sign-up
+                  {/* <Stat ml={2}>
+                         <StatArrow as="span" transform="rotate(-90deg)" color="white" />
+                      </Stat> */}
+                  <ArrowForwardIcon color={"white"} ml={1} />
+                </Box>
               </Button>
             </Box>
             <div className="default-ltr-cache-dulgtd">

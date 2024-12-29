@@ -185,7 +185,7 @@ const Navbar = () => {
                           mt={2}
                           border={"1px solid red"}
                           bg={"#E50914"}
-                          borderRadius={0}
+                          borderRadius={'4px'}
                           textColor={"white"}
                           onClick={logout}
                           _hover={{ bg: "E50914" }}
@@ -198,7 +198,7 @@ const Navbar = () => {
                         mt={2}
                         border={"1px solid red"}
                         bg={"#E50914"}
-                        borderRadius={0}
+                        borderRadius={'4px'}
                         textColor={"white"}
                         onClick={handleGoogleLogin}
                         _hover={{ bg: "#E50914" }}
