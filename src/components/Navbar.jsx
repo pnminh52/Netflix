@@ -128,9 +128,6 @@ const Navbar = () => {
                   <Link to="/watchlist">
                     <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Watchlist</MenuItem>
                   </Link>
-                  <Link to="/Favorite">
-                    <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Favorite</MenuItem>
-                  </Link>
                   <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}} bg={'black'} onClick={logout}>Logout</MenuItem>
                 </MenuList>
               </Menu>
