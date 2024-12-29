@@ -1,0 +1,3 @@
+using accont and password, user can login and register 
+manager account (Active, lock)
+manager movies and TV show (Hide, show)
