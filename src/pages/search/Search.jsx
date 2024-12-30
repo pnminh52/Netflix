@@ -41,7 +41,7 @@ const Search = () => {
 
   return (
     <Container maxW={"container.xl"}>
-     <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"0"}>
+     <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"2"}>
      <Heading fontSize={"lg"} fontWeight={"medium"}>
           Search
         </Heading>
@@ -69,9 +69,9 @@ const Search = () => {
         <Heading
           textAlign={"center"}
           as="h3"
-          fontSize={"sm"}
+          fontSize={"md"}
           fontWeight={"thin"}
-          mt="5"
+          mt="8"
           
         >
           No results found

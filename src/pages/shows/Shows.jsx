@@ -35,7 +35,7 @@ const Shows = () => {
 
   return (
     <Container maxW={"container.xl"}>
-      <Flex alignItems={"baseline"} gap={"4"} my="10" mt={"0"}>
+      <Flex alignItems={"baseline"} gap={"4"} my="10" mt={"2"}>
         <Heading fontSize={"lg"} fontWeight={"medium"}>
          TV-Shows
         </Heading>

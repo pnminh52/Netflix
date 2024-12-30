@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { user, signInWithGoogle, logout } = useAuth();
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   // const handleGoogleLogin = async () => {
   //   try {
   //     await signInWithGoogle();
@@ -35,10 +35,18 @@ const Navbar = () => {
   //   }
   // };
   const handleLoginRedirect = () => {
-    navigate("/login"); 
+    navigate("/login");
+  };
+  const handleLogoutRedirect = async () => {
+    try {
+      await logout();
+      navigate("/");
+    } catch (error) {
+      // console.log("errr", error);
+    }
   };
   return (
-    <Box py="4" mb="0" bg={'none'}>
+    <Box py="4" mb="0" bg={"none"}>
       <Container maxW={"container.xl"}>
         <Flex justifyContent={"space-between"}>
           <Link to="/">
@@ -127,11 +135,36 @@ const Navbar = () => {
                     name={user?.email}
                   />
                 </MenuButton>
-                <MenuList mt={2} borderRadius={0} bg={'black'} >
+                <MenuList mt={2} borderRadius={0} bg={"black"}>
                   <Link to="/watchlist">
-                    <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}}   bg={'black'}>Watchlist</MenuItem>
+                    <MenuItem
+                      color={"gray.400"}
+                      transition={"0.3s ease-in-out"}
+                      _hover={{ color: "white" }}
+                      bg={"black"}
+                    >
+                      Watchlist
+                    </MenuItem>
                   </Link>
-                  <MenuItem color={'gray.400'} transition={"0.3s ease-in-out"} _hover={{ color: 'white',}} bg={'black'} onClick={logout}>Logout</MenuItem>
+                  <Link to="/watchlist">
+                    <MenuItem
+                      color={"gray.400"}
+                      transition={"0.3s ease-in-out"}
+                      _hover={{ color: "white" }}
+                      bg={"black"}
+                    >
+                      Account
+                    </MenuItem>
+                  </Link>
+                  <MenuItem
+                    color={"gray.400"}
+                    transition={"0.3s ease-in-out"}
+                    _hover={{ color: "white" }}
+                    bg={"black"}
+                    onClick={handleLogoutRedirect}
+                  >
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </Menu>
             )}
@@ -154,10 +187,10 @@ const Navbar = () => {
               <SearchIcon fontSize={"xl"} />
             </Link>
             <IconButton onClick={onOpen} icon={<HamburgerIcon />} />
-            <Drawer  isOpen={isOpen} placement="right" onClose={onClose}>
+            <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
               <DrawerOverlay />
               <DrawerContent bg={"black"}>
-                <DrawerCloseButton mt={2}/>
+                <DrawerCloseButton mt={2} />
                 <DrawerHeader>
                   {user ? (
                     <Flex cursor={"pointer"} alignItems="center" gap="2">
@@ -184,14 +217,16 @@ const Navbar = () => {
                     {user ? (
                       <>
                         <Link to="/watchlist">Watchlist</Link>
+                        <Link to="/watchlist">Account</Link>
                         <Button
                           mt={2}
                           border={"1px solid red"}
                           bg={"#E50914"}
-                          borderRadius={'4px'}
+                          borderRadius={"4px"}
                           textColor={"white"}
                           onClick={logout}
-                          _hover={{ bg: "E50914" }}
+                          _hover={"none"}
+                          _active={"none"}
                         >
                           Logout
                         </Button>
@@ -201,10 +236,11 @@ const Navbar = () => {
                         mt={2}
                         border={"1px solid red"}
                         bg={"#E50914"}
-                        borderRadius={'4px'}
+                        borderRadius={"4px"}
                         textColor={"white"}
                         onClick={handleLoginRedirect}
-                        _hover={{ bg: "#E50914" }}
+                        _hover={"none"}
+                        _active={"none"}
                       >
                         Login
                       </Button>

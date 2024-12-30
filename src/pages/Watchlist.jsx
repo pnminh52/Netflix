@@ -50,7 +50,7 @@ const Watchlist = () => {
 
   return (
     <Container maxW={"container.xl"}>
-            <Flex alignItems={"baseline"} my={"10"} mt={"0"}>
+            <Flex alignItems={"baseline"} my={"10"} mt={"2"}>
 
         <Flex gap={2}>
           <Heading  fontSize={"lg"} fontWeight={"medium"}>Watchlist</Heading>
@@ -72,18 +72,19 @@ const Watchlist = () => {
           <Heading
             textAlign={"center"}
             as="h3"
-            fontSize={"sm"}
+            fontSize={"lg"}
             fontWeight={"thin"}
-            mt="6"
+          justifyContent="center"
+  alignItems="center"
+            mt={'250px'}
           >
             Your watchlist is empty
           </Heading>
         )}
 
-
+{/* 
       {isLoading && (
         <Flex justify={"center"} >
-          {/* <Spinner size={"xl"} color="red" /> */}
           <Heading
           textAlign={"center"}
           as="h3"
@@ -93,30 +94,32 @@ const Watchlist = () => {
           
         >You must login to use this feature</Heading>
         </Flex>
-      )}
-      {!isLoading && watchlist?.length > 0 && (
-        <Grid
-          templateColumns={{
-            base: "1fr",
-          }}
-          gap={"4"}
-        >
-          {watchlist?.map((item) => (
-            <WatchlistCard
-              key={item?.id}
-              item={item}
-              type={item?.type}
-              setWatchlist={setWatchlist}
-            />
-          ))}
-        </Grid>
-      )}
-      {/* <Box mb={4}></Box> */}
-            <PaginationComponent
-              activePage={activePage}
-              totalPages={totalPages}
-              setActivePage={setActivePage}
-            />
+      )} */}
+ {!isLoading && watchlist?.length > 0 && (
+  <>
+    <Grid
+      templateColumns={{
+        base: "1fr",
+      }}
+      gap={"4"}
+    >
+      {watchlist?.map((item) => (
+        <WatchlistCard
+          key={item?.id}
+          item={item}
+          type={item?.type}
+          setWatchlist={setWatchlist}
+        />
+      ))}
+    </Grid>
+    <PaginationComponent
+      activePage={activePage}
+      totalPages={totalPages}
+      setActivePage={setActivePage}
+    />
+  </>
+)}
+
     </Container>
   );
 };
