@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
+  FacebookAuthProvider
 } from "firebase/auth";
 import PropTypes from "prop-types";
 
@@ -13,6 +14,11 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  function signInWithFacebook() {
+    const provider = new FacebookAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
 
   function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -35,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, signInWithGoogle, logout }}>
+    <AuthContext.Provider value={{ user, isLoading, signInWithGoogle, logout, signInWithFacebook }}>
       {children}
     </AuthContext.Provider>
   );
