@@ -37,7 +37,7 @@ const Register = () => {
         duration: 4000,
         isClosable: true,
       });
-      navigate("/login"); // Redirect to login page after registration
+      navigate("/");
     } catch (error) {
       toast({
         title: "Error creating account",

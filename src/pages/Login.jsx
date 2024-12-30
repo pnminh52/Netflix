@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, FormControl, FormLabel, Input, Stack, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, Text, useToast } from "@chakra-ui/react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase"; // Adjust the path if needed
 
@@ -18,10 +18,7 @@ const Login = () => {
     try {
       // Sign in using Firebase Authentication
       await signInWithEmailAndPassword(auth, email, password);
-      
-      // Redirect to homepage or another page after successful login
-      navigate("/homepage");
-
+          navigate("/homepage");
       // Show success toast
       toast({
         title: "Login Successful",
@@ -45,8 +42,8 @@ const Login = () => {
   };
 
   return (
-    <Box maxW="md" mx="auto" mt="10" p="6" borderWidth="1px" borderRadius="lg">
-      <h1>Login Page</h1>
+    <Box maxW="md" mx="auto" mt="10" p="4" borderWidth="1px" borderRadius="md">
+      <Text >Login Page</Text>
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
           <FormControl id="email" isRequired>
@@ -68,7 +65,10 @@ const Login = () => {
             />
           </FormControl>
           <Button
-            colorScheme="teal"
+            color="white"
+        bg={'red'}
+        _hover={'none'}
+        _active={'none'}
             isLoading={loading}
             type="submit"
             loadingText="Logging in"
