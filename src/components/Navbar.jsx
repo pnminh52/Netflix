@@ -39,7 +39,7 @@ const Navbar = () => {
   };
   const handleLogoutRedirect = async () => {
     try {
-      await logout();
+    await logout();
       navigate("/");
     } catch (error) {
       // console.log("errr", error);
@@ -146,16 +146,6 @@ const Navbar = () => {
                       Watchlist
                     </MenuItem>
                   </Link>
-                  <Link to="/watchlist">
-                    <MenuItem
-                      color={"gray.400"}
-                      transition={"0.3s ease-in-out"}
-                      _hover={{ color: "white" }}
-                      bg={"black"}
-                    >
-                      Account
-                    </MenuItem>
-                  </Link>
                   <MenuItem
                     color={"gray.400"}
                     transition={"0.3s ease-in-out"}
@@ -217,14 +207,13 @@ const Navbar = () => {
                     {user ? (
                       <>
                         <Link to="/watchlist">Watchlist</Link>
-                        <Link to="/watchlist">Account</Link>
                         <Button
                           mt={2}
                           border={"1px solid red"}
                           bg={"#E50914"}
                           borderRadius={"4px"}
                           textColor={"white"}
-                          onClick={logout}
+                          onClick={handleLogoutRedirect}
                           _hover={"none"}
                           _active={"none"}
                         >

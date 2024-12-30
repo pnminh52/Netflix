@@ -13,16 +13,28 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
+
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase"; // Adjust the path if needed
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/useAuth";
 const Login = () => {
   const [email, setEmail] = useState("");
+  const {user, signInWithGoogle}=useAuth();
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
-
+  const handleGoogleLogin=async()=>{
+    try {
+      await signInWithGoogle();
+      navigate("/homepage")
+    } catch (error) {
+      // console.log('err', error);
+      
+      
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -122,6 +134,7 @@ const Login = () => {
     borderRadius="50%"
     bg="white"
     p="4px"
+    onClick={handleGoogleLogin}
   >
     <path
       fill="#FFC107"

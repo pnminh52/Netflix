@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 import { useFirestore } from "../services/firestore";
 import { useAuth } from "../context/useAuth";
-import {Box, Container, Flex, Grid, Heading, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Grid,
+  Heading,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import WatchlistCard from "../components/WatchlistCard";
 import PaginationComponent from "../components/PaginationComponent";
 import { fetchTrending } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Watchlist = () => {
   const { getWatchlist } = useFirestore();
@@ -50,39 +59,40 @@ const Watchlist = () => {
 
   return (
     <Container maxW={"container.xl"}>
-            <Flex alignItems={"baseline"} my={"10"} mt={"2"}>
-
+      <Flex alignItems={"baseline"} my={"10"} mt={"2"}>
         <Flex gap={2}>
-          <Heading  fontSize={"lg"} fontWeight={"medium"}>Watchlist</Heading>
+          <Heading fontSize={"lg"} fontWeight={"medium"}>
+            Watchlist
+          </Heading>
           {count > 0 && !isLoading && (
-          <Heading
-            textAlign={"right"}
-            as="h3"
-            fontSize={"sm"}
-            fontWeight={"thin"}
-            mt={1}
-          
-          >
-            <Text>You have {count} movie{count > 1 ? 's' : ''} in your watchlist</Text>
-          </Heading>
-        )}
+            <Heading
+              textAlign={"right"}
+              as="h3"
+              fontSize={"sm"}
+              fontWeight={"thin"}
+              mt={1}
+            >
+              <Text>
+                You have {count} movie{count > 1 ? "s" : ""} in your watchlist
+              </Text>
+            </Heading>
+          )}
         </Flex>
-        </Flex>
-        {count === 0 && !isLoading && (
-          <Heading
-            textAlign={"center"}
-            as="h3"
-            fontSize={"lg"}
-            fontWeight={"thin"}
+      </Flex>
+      {count === 0 && !isLoading && (
+        <Heading
+          textAlign={"center"}
+          as="h3"
+          fontSize={"lg"}
+          fontWeight={"thin"}
           justifyContent="center"
-  alignItems="center"
-            mt={'250px'}
-          >
-            Your watchlist is empty
-          </Heading>
-        )}
+          alignItems="center"
+        >
+          Your watchlist is empty
+        </Heading>
+      )}
 
-{/* 
+      {/* 
       {isLoading && (
         <Flex justify={"center"} >
           <Heading
@@ -95,31 +105,30 @@ const Watchlist = () => {
         >You must login to use this feature</Heading>
         </Flex>
       )} */}
- {!isLoading && watchlist?.length > 0 && (
-  <>
-    <Grid
-      templateColumns={{
-        base: "1fr",
-      }}
-      gap={"4"}
-    >
-      {watchlist?.map((item) => (
-        <WatchlistCard
-          key={item?.id}
-          item={item}
-          type={item?.type}
-          setWatchlist={setWatchlist}
-        />
-      ))}
-    </Grid>
-    <PaginationComponent
-      activePage={activePage}
-      totalPages={totalPages}
-      setActivePage={setActivePage}
-    />
-  </>
-)}
-
+      {!isLoading && watchlist?.length > 0 && (
+        <>
+          <Grid
+            templateColumns={{
+              base: "1fr",
+            }}
+            gap={"4"}
+          >
+            {watchlist?.map((item) => (
+              <WatchlistCard
+                key={item?.id}
+                item={item}
+                type={item?.type}
+                setWatchlist={setWatchlist}
+              />
+            ))}
+          </Grid>
+          <PaginationComponent
+            activePage={activePage}
+            totalPages={totalPages}
+            setActivePage={setActivePage}
+          />
+        </>
+      )}
     </Container>
   );
 };
