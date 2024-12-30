@@ -52,14 +52,14 @@ const Register = () => {
   };
 
   return (
-    <Box maxW="md" mx="auto" p={6} borderWidth={1} borderRadius="lg" boxShadow="lg">
-      <Text fontSize="2xl" mb={4} textAlign="center">
-        Create an Account
-      </Text>
+    <Box  maxW="sm" mx="auto" mt="10" p="4" borderWidth="1px" borderRadius="md">
+
+    <Text textAlign={'center'} fontSize={'3xl'} mt={3} mb={4}>Create an Account</Text> 
+     
       <form onSubmit={handleRegister}>
         <Stack spacing={4}>
           <FormControl isRequired>
-            <FormLabel>Email</FormLabel>
+            <Text mb={1} fontWeight={'medium'}>Email</Text>
             <Input
               type="email"
               value={email}
@@ -69,7 +69,7 @@ const Register = () => {
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel>Password</FormLabel>
+            <Text mb={1} fontWeight={'medium'}> Password</Text>
             <Input
               type="password"
               value={password}
@@ -79,7 +79,7 @@ const Register = () => {
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel>Confirm Password</FormLabel>
+             <Text mb={1} fontWeight={'medium'}> Confirm password</Text>
             <Input
               type="password"
               value={confirmPassword}
@@ -87,25 +87,32 @@ const Register = () => {
               placeholder="Confirm your password"
             />
           </FormControl>
-
-          <Button
-            type="submit"
-            colorScheme="red"
-            isLoading={isLoading}
-            loadingText="Registering"
-            width="full"
-          >
-            Register
-          </Button>
+              <Button
+                      color="white"
+                      bg={"red"}
+                      _hover={"none"}
+                      _active={"none"}
+                      isLoading={isLoading}
+                      type="submit"
+                      loadingText="Logging in to your account"
+                    >
+                     Register
+                    </Button>
         </Stack>
       </form>
-
-      <Text mt={4} textAlign="center">
-        Already have an account?{" "}
-        <Button variant="link" colorScheme="blue" onClick={() => navigate("/login")}>
-          Login here
-        </Button>
-      </Text>
+      <Text mt={2}>
+      Already have an account?{" "}
+              <Button
+                variant="link"
+                color="red"
+                fontWeight={'md'}
+                _active={'none'}
+                onClick={() => navigate("/login")}
+              >
+                Login here
+              </Button>
+              
+            </Text>
     </Box>
   );
 };

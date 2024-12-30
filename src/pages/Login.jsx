@@ -14,7 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, } from "firebase/auth";
 import { auth } from "../services/firebase"; // Adjust the path if needed
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
@@ -67,11 +67,11 @@ const Login = () => {
 
   return (
     <Box  maxW="sm" mx="auto" mt="10" p="4" borderWidth="1px" borderRadius="md">
-<Heading textAlign={'center'} mt={3} mb={4}>Log-in to your account</Heading> 
+<Text textAlign={'center'} fontSize={'3xl'} mt={3} mb={4}>Log-in to your account</Text> 
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
           <FormControl id="email" isRequired>
-            <Text fontWeight={'medium'}>Email</Text>
+            <Text mb={1} fontWeight={'medium'}>Email</Text>
             <Input
               type="email"
               value={email}
@@ -80,7 +80,7 @@ const Login = () => {
             />
           </FormControl>
           <FormControl id="password" isRequired>
-            <Text fontWeight={'medium'}> Password</Text>
+            <Text mb={1} fontWeight={'medium'}> Password</Text>
             <Input
               type="password"
               value={password}
@@ -107,6 +107,7 @@ const Login = () => {
           variant="link"
           color="red"
           fontWeight={'md'}
+          _active={'none'}
           onClick={() => navigate("/register")}
         >
           Register here
