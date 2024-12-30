@@ -50,14 +50,14 @@ const router = createBrowserRouter([
         path: "/watchlist",
         element: <Watchlist />,
       },
-      // {
-      //   path: "/login",
-      //   element: <Login />,
-      // },
-      // {
-      //   path: "/register",
-      //   element: <Register />,
-      // },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
 ]);

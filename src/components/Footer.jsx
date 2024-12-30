@@ -10,8 +10,8 @@ const Footer = () => {
       
       textAlign="center"
     >
-        <Text mt={2}>&copy; {new Date().getFullYear()} Netflix. All copyrights reserved.</Text>
-        <Text mb={4} cursor={'pointer'} color="red.500">Elyz.thedev@gmail.com</Text>
+        {/* <Text mt={2}>&copy; {new Date().getFullYear()} Netflix. All copyrights reserved.</Text>
+        <Text mb={4} cursor={'pointer'} color="red.500">Elyz.thedev@gmail.com</Text> */}
   
     </Container>
   );

@@ -20,20 +20,23 @@ import {
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { user, signInWithGoogle, logout } = useAuth();
   const { onOpen, isOpen, onClose } = useDisclosure();
-
-  const handleGoogleLogin = async () => {
-    try {
-      await signInWithGoogle();
-      // console.log("success");
-    } catch (error) {
-      // console.log("errr", error);
-    }
+  const navigate = useNavigate(); 
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     await signInWithGoogle();
+  //     // console.log("success");
+  //   } catch (error) {
+  //     // console.log("errr", error);
+  //   }
+  // };
+  const handleLoginRedirect = () => {
+    navigate("/login"); 
   };
-
   return (
     <Box py="4" mb="0" bg={'none'}>
       <Container maxW={"container.xl"}>
@@ -137,7 +140,7 @@ const Navbar = () => {
                 size={"sm"}
                 bg={"gray.800"}
                 as="button"
-                onClick={handleGoogleLogin}
+                onClick={handleLoginRedirect}
               />
             )}
           </Flex>
@@ -168,7 +171,7 @@ const Navbar = () => {
                       size={"sm"}
                       bg="gray.800"
                       as="button"
-                      onClick={handleGoogleLogin}
+                      onClick={handleLoginRedirect}
                     />
                   )}
                 </DrawerHeader>
@@ -200,7 +203,7 @@ const Navbar = () => {
                         bg={"#E50914"}
                         borderRadius={'4px'}
                         textColor={"white"}
-                        onClick={handleGoogleLogin}
+                        onClick={handleLoginRedirect}
                         _hover={{ bg: "#E50914" }}
                       >
                         Login
