@@ -124,52 +124,38 @@ const Netflix = () => {
               zIndex={0}
             >
               <Heading
-                textTransform={"none"}
-                fontSize={["3xl", "4xl", "5xl"]}
-                mb={2}
+                
+                fontSize={["4xl"]}
+                mb={1}
               >
                 Unlimited movies, TV shows, and more
               </Heading>
-              <Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
+              <Text mb={2} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
                 Starts at 70,000 ₫. Cancel anytime.
               </Text>
               <Button
-                _hover={"none"}
+                _hover="none"
                 textAlign="center"
                 justifyContent="center"
-                bg={"red"}
-                color={"white"}
-                px={[4, 8]}
-                py={[2, 6]}
+                bg="red"
+                color="white"
+                px={[4, 6]}
+                py={[2, 4]}
                 _active={{
                   bg: "red",
                 }}
-                borderRadius={"4px"}
+                borderRadius="4px"
                 display="inline-flex"
                 alignItems="center"
               >
-                <Text fontSize={"xl"} fontWeight={"none"}>
+                <Text
+                  fontSize={["sm", "md", "lg"]} // Responsive font size theo breakpoint
+                  fontWeight="medium"
+                  letterSpacing="wide"
+                  // textTransform="uppercase"
+                >
                   Finish Sign-up
                 </Text>
-
-                {/* <Text>
-                  <svg
-                    color="white"
-                    width="40px"
-                    height="40px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9 18L15 12L9 6"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </Text> */}
               </Button>
             </Box>
             <div className="default-ltr-cache-dulgtd">
