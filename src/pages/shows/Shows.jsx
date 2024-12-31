@@ -158,11 +158,13 @@ const Shows = () => {
           ))}
       </Grid>
 
-      <PaginationComponent
-        activePage={activePage}
-        totalPages={totalPages}
-        setActivePage={setActivePage}
-      />
+      {!isLoading && (
+        <PaginationComponent
+          activePage={activePage}
+          totalPages={totalPages}
+          setActivePage={setActivePage}
+        />
+      )}
     </Container>
   );
 };

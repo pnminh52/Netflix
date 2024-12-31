@@ -38,7 +38,7 @@ const Movies = () => {
     <Container maxW={"container.xl"}>
       <Flex alignItems={"baseline"} gap={"4"} my={"10"} mt={"2"}>
         <Heading fontSize={"lg"} fontWeight={"medium"}>
-         Movies
+          Movies
         </Heading>
 
         <Flex alignItems={"center"} gap={"0"} borderRadius={"10px"}>
@@ -183,11 +183,13 @@ const Movies = () => {
             </Fade>
           ))}
       </Grid>
-      <PaginationComponent
-        activePage={activePage}
-        totalPages={totalPages}
-        setActivePage={setActivePage}
-      />
+      {!isLoading && (
+        <PaginationComponent
+          activePage={activePage}
+          totalPages={totalPages}
+          setActivePage={setActivePage}
+        />
+      )}
     </Container>
   );
 };
