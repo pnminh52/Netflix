@@ -9,20 +9,21 @@ import {
   Grid,
   Card,
   Fade,
+  Select,
   Icon,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 import "../css/index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules"; // Import các module cần thiết
 import "swiper/css";
-import  "../../public/Netflix.jpg"
+import "../../public/Netflix.jpg";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
-import { fetchTrending } from "../services/api";
+import { fetchTrending, fetchTvSeries } from "../services/api";
 import React, { useEffect, useState, useRef } from "react";
+
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
     base: 3,
@@ -33,7 +34,9 @@ const Netflix = () => {
   });
   const [openCard, setOpenCard] = useState(null);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [type, setType] = useState("movies");
+  const [tvData, setTvData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -56,8 +59,7 @@ const Netflix = () => {
     return () => {
       swiper.off("slideChange", onSlideChange);
     };
-  }, []); // Sử dụng mảng phụ thuộc trống để chỉ chạy 1 lần khi component mount
-  // Kiểm tra trạng thái khi quay lại trang
+  }, []);
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;
@@ -65,9 +67,8 @@ const Netflix = () => {
       setIsLastSlide(swiper.isEnd);
     }
   }, [data]);
-
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     fetchTrending(timeWindow)
       .then((res) => {
         setData(res);
@@ -76,7 +77,7 @@ const Netflix = () => {
         console.log(err, "err");
       })
       .finally(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
   }, [timeWindow]);
   const nextSlide = () => {
@@ -85,6 +86,21 @@ const Netflix = () => {
 
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (type === "movies") {
+        const response = await fetchTrending("day");
+        setData(response);
+      } else if (type === "tv-shows") {
+        const response = await fetchTvSeries(1, "popularity.desc");
+        setTvData(response);
+      }
+    };
+    fetchData();
+  }, [type]);
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
   };
 
   return (
@@ -198,6 +214,14 @@ const Netflix = () => {
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
+            <Select onChange={handleTypeChange} mb={2}>
+              <option value="movies">Vietnam</option>
+              <option value="tv-shows">Global</option>
+            </Select>
+            <Select mb={4} value={type} onChange={handleTypeChange}>
+              <option value="movies">Movies</option>
+              <option value="tv-shows">TV Shows</option>
+            </Select>
             <Swiper
               modules={[Navigation, Pagination]}
               spaceBetween={10}
@@ -209,20 +233,29 @@ const Netflix = () => {
               className="mySwiper"
               ref={swiperRef}
             >
-              {data?.map((item) => (
-                <SwiperSlide key={item.id} className="swiper-slide">
-                  <Fade in={!loading} transition="all 0.3s ease-in-out">
-                    {loading ? (
-                      <div className="skeleton-container">
-                        <Skeleton height={300} width="200px" />
-                      </div>
-                    ) : (
-                      <SlideComponent item={item} type={item.media_type} />
-                    )}
-                  </Fade>
-                </SwiperSlide>
-              ))}
-
+              {type === "movies"
+                ? data?.map((item, i) => (
+                    <Fade>
+                      {isLoading ? (
+                     <Skeleton height={300} key={i} />
+                      ):(
+                        <SwiperSlide key={item.id} className="swiper-slide">
+                        <SlideComponent item={item} type="movies" />
+                      </SwiperSlide>
+                      )}
+                    </Fade>
+                  ))
+                : tvData?.results?.map((item, i) => (
+                    <Fade>
+                            {isLoading ? (
+                     <Skeleton height={300} key={i} />
+                      ):(
+                      <SwiperSlide key={item.id} className="swiper-slide">
+                        <SlideComponent item={item} type="tv-shows" />
+                      </SwiperSlide>
+                       )}
+                    </Fade>
+                  ))}
               <Button
                 onClick={prevSlide}
                 bg="black"
@@ -257,7 +290,6 @@ const Netflix = () => {
                   />
                 </svg>
               </Button>
-
               <Button
                 onClick={nextSlide}
                 bg="black"
