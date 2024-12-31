@@ -28,7 +28,7 @@ const Movies = () => {
         setTotalPage(res?.total_pages);
       })
       .catch((err) => {
-        console.log(err, "err");
+        // console.log(err, "err");
       })
       .finally(() => {
         setIsLoading(false);

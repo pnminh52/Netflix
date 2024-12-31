@@ -33,8 +33,9 @@ const Netflix = () => {
     xl: 7,
   });
   const [openCard, setOpenCard] = useState(null);
+  const [region, setRegion]=useState("Vietnam")
   const [data, setData] = useState([]);
-  const [type, setType] = useState("movies");
+  const [type, setType] = useState("movie");
   const [tvData, setTvData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [timeWindow, setTimeWindow] = useState("day");
@@ -43,6 +44,15 @@ const Netflix = () => {
   const swiperRef = useRef(null);
   const toggleCard = (cardNumber) => {
     setOpenCard(openCard === cardNumber ? null : cardNumber);
+  };
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
+  const nextSlide = () => {
+    swiperRef.current.swiper.slideNext();
+  };
+  const prevSlide = () => {
+    swiperRef.current.swiper.slidePrev();
   };
   useEffect(() => {
     const swiper = swiperRef.current.swiper;
@@ -80,28 +90,26 @@ const Netflix = () => {
         setIsLoading(false);
       });
   }, [timeWindow]);
-  const nextSlide = () => {
-    swiperRef.current.swiper.slideNext();
-  };
-
-  const prevSlide = () => {
-    swiperRef.current.swiper.slidePrev();
-  };
   useEffect(() => {
     const fetchData = async () => {
-      if (type === "movies") {
-        const response = await fetchTrending("day");
-        setData(response);
-      } else if (type === "tv-shows") {
-        const response = await fetchTvSeries(1, "popularity.desc");
-        setTvData(response);
+      try {
+        setIsLoading(true);
+        if (type === "movie") {
+          const response = await fetchTrending("day");
+          setData(response);
+        } else if (type === "tv") {
+          const response = await fetchTvSeries(1, "popularity.desc");
+          setTvData(response);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
+  
     fetchData();
   }, [type]);
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-  };
 
   return (
     <div>
@@ -215,14 +223,12 @@ const Netflix = () => {
               Trending Now
             </Heading>
             <Select onChange={handleTypeChange} mb={2}>
-              <option style={{
-                
-              }}  value="movies">Vietnam</option>
-              <option  value="tv-shows">Global</option>
+              <option  value="">Vietnam</option>
+              <option  value="">Global</option>
             </Select>
             <Select mb={4} value={type} onChange={handleTypeChange}>
-              <option  value="movies">Movies</option>
-              <option  value="tv-shows">TV Shows</option>
+              <option  value="movie">Movies</option>
+              <option  value="tv">TV Shows</option>
             </Select>
             <Swiper
               modules={[Navigation, Pagination]}
@@ -235,29 +241,17 @@ const Netflix = () => {
               className="mySwiper"
               ref={swiperRef}
             >
-              {type === "movies"
-                ? data?.map((item, i) => (
-                    <Fade>
-                      {isLoading ? (
-                     <Skeleton height={300} key={i} />
-                      ):(
-                        <SwiperSlide key={item.id} className="swiper-slide">
-                        <SlideComponent item={item} type="movies" />
-                      </SwiperSlide>
-                      )}
-                    </Fade>
-                  ))
-                : tvData?.results?.map((item, i) => (
-                    <Fade>
-                            {isLoading ? (
-                     <Skeleton height={300} key={i} />
-                      ):(
-                      <SwiperSlide key={item.id} className="swiper-slide">
-                        <SlideComponent item={item} type="tv-shows" />
-                      </SwiperSlide>
-                       )}
-                    </Fade>
-                  ))}
+                {type === "movie"
+          ? data?.map((item) => (
+              <SwiperSlide key={item.id} className="swiper-slide">
+                <SlideComponent item={item} type="movie" />
+              </SwiperSlide>
+            ))
+          : tvData?.results?.map((item) => (
+              <SwiperSlide key={item.id} className="swiper-slide">
+                <SlideComponent item={item} type="tv" />
+              </SwiperSlide>
+            ))}
               <Button
                 onClick={prevSlide}
                 bg="black"
