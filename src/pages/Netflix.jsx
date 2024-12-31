@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import "../css/index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules"; // Import các module cần thiết
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "../../public/Netflix.jpg";
 import "swiper/css/navigation";
@@ -54,22 +54,31 @@ const Netflix = () => {
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
   };
+  //!!useEffect
   useEffect(() => {
-    const swiper = swiperRef.current.swiper;
-    // Lắng nghe sự kiện slideChange để cập nhật trạng thái của slide
-    const onSlideChange = () => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current.swiper;
       setIsFirstSlide(swiper.isBeginning);
       setIsLastSlide(swiper.isEnd);
-    };
-    // Lắng nghe sự kiện slideChange khi component được mount
-    swiper.on("slideChange", onSlideChange);
-    // Cập nhật trạng thái ban đầu khi lần đầu render
-    onSlideChange();
-    // Dọn dẹp sự kiện khi component unmount
-    return () => {
-      swiper.off("slideChange", onSlideChange);
-    };
-  }, []);
+      
+      // Lắng nghe sự kiện slideChange khi dữ liệu thay đổi (Movies hoặc TV Shows)
+      const onSlideChange = () => {
+        setIsFirstSlide(swiper.isBeginning);
+        setIsLastSlide(swiper.isEnd);
+      };
+  
+      swiper.on("slideChange", onSlideChange);
+  
+      // Đảm bảo cập nhật trạng thái ban đầu sau khi dữ liệu được tải xong
+      onSlideChange();
+  
+      // Dọn dẹp sự kiện khi component unmount
+      return () => {
+        swiper.off("slideChange", onSlideChange);
+      };
+    }
+  }, [type, data, tvData]);  
+  // Đảm bảo lắng nghe sự thay đổi của type và dữ liệu
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;
@@ -84,7 +93,7 @@ const Netflix = () => {
         setData(res);
       })
       .catch((err) => {
-        console.log(err, "err");
+        // console.log(err, "err");
       })
       .finally(() => {
         setIsLoading(false);
@@ -102,7 +111,7 @@ const Netflix = () => {
           setTvData(response);
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }
