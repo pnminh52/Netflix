@@ -158,7 +158,7 @@ const Shows = () => {
           ))}
       </Grid>
 
-      {!isLoading && (
+          {!isLoading && (
         <PaginationComponent
           activePage={activePage}
           totalPages={totalPages}
