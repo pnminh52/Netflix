@@ -22,7 +22,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
 import React, { useEffect, useState, useRef } from "react";
-import { fetchTrending, fetchTvSeries, fetchMoviesByCountry } from "../services/api";
+import {
+  fetchTrending,
+  fetchTvSeries,
+  fetchMoviesByCountry,
+} from "../services/api";
 
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
@@ -33,9 +37,7 @@ const Netflix = () => {
     xl: 7,
   });
   const [openCard, setOpenCard] = useState(null);
-    //!!-----------------------------------------------
-  // const [region, setRegion] = useState("Global");
-    //!!-----------------------------------------------
+  const [region, setRegion] = useState("global");
   const [data, setData] = useState([]);
   const [type, setType] = useState("movie");
   const [tvData, setTvData] = useState([]);
@@ -47,21 +49,28 @@ const Netflix = () => {
   const toggleCard = (cardNumber) => {
     setOpenCard(openCard === cardNumber ? null : cardNumber);
   };
+  const handleRegionChange = (e) => {
+    const selectedRegion = e.target.value;
+    setRegion(selectedRegion);
+
+    // Thay đổi mã quốc gia khi chọn Vietnam
+    if (selectedRegion === "Vietnam") {
+      fetchData("VN");
+    } else {
+      fetchData("global");
+    }
+  };
+
   const handleTypeChange = (e) => {
     setType(e.target.value);
   };
-  //!!-----------------------------------------------
-  // const handleRegionChange = (e) => {
-  //   setRegion(e.target.value);
-  // };
-    //!!-----------------------------------------------
   const nextSlide = () => {
     swiperRef.current.swiper.slideNext();
   };
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
   };
-  //!!useEffect
+  
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;
@@ -87,73 +96,50 @@ const Netflix = () => {
       const swiper = swiperRef.current.swiper;
       setIsFirstSlide(swiper.isBeginning);
       setIsLastSlide(swiper.isEnd);
-      
+
       // Lắng nghe sự kiện slideChange khi dữ liệu thay đổi (Movies hoặc TV Shows)
       const onSlideChange = () => {
         setIsFirstSlide(swiper.isBeginning);
         setIsLastSlide(swiper.isEnd);
       };
-  
+
       swiper.on("slideChange", onSlideChange);
-  
+
       // Đảm bảo cập nhật trạng thái ban đầu sau khi dữ liệu được tải xong
       onSlideChange();
-  
+
       // Dọn dẹp sự kiện khi component unmount
       return () => {
         swiper.off("slideChange", onSlideChange);
       };
     }
-  }, [type, data, tvData]); 
-  // //!!-------------------------------------------
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-
-  //       if (type === "movie") {
-  //         if (region === "Global") {
-  //           const response = await fetchTrending("day");
-  //           setData(response);
-  //         } else if (region === "Vietnam") {
-  //           const response = await fetchMoviesByCountry("Vietnam");
-  //           setData(response);
-  //         }
-  //       } else if (type === "tv") {
-  //         const response = await fetchTvSeries(1, "vote_count.desc");
-  //         setData(response);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [type, region]);
-  // //!!---------------------------------------------
+  }, [type, data, tvData]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         if (type === "movie") {
-          const response = await fetchTrending("day");
+          const response =
+            region === "Vietnam"
+              ? await fetchMoviesByCountry("VN")
+              : await fetchTrending("day");
           setData(response);
         } else if (type === "tv") {
-          const response = await fetchTvSeries(1, "popularity.desc");
+          const response =
+            region === "Vietnam"
+              ? await fetchTvSeries(1, "revenue.desc", "VN")
+              : await fetchTvSeries(1, "popularity.desc");
           setTvData(response);
         }
       } catch (error) {
-        // console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }
     };
-  
-    fetchData();
-  }, [type]);
 
+    fetchData();
+  }, [type, region]);
   return (
     <div>
       <div>
@@ -265,19 +251,13 @@ const Netflix = () => {
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
-            {/* //!!-----------------------------------------------
-            <Select mb={4} value={region} onChange={handleRegionChange}>
-        <option value="Global">Global</option>
-        <option value="Vietnam">Vietnam</option>
-      </Select>
-      //!!----------------------------------------------- */}
-      <Select mb={4} >
-        <option >Global</option>
-        <option >Vietnam</option>
-      </Select>
+            <Select mb={2} value={region} onChange={handleRegionChange}>
+              <option value="Global">Global</option>
+              <option value="Vietnam">Vietnam</option>
+            </Select>
             <Select mb={4} value={type} onChange={handleTypeChange}>
-              <option  value="movie">Movies</option>
-              <option  value="tv">TV Shows</option>
+              <option value="movie">Movies</option>
+              <option value="tv">TV Shows</option>
             </Select>
             <Swiper
               modules={[Navigation, Pagination]}
@@ -290,17 +270,17 @@ const Netflix = () => {
               className="mySwiper"
               ref={swiperRef}
             >
-                {type === "movie"
-          ? data?.map((item) => (
-              <SwiperSlide key={item.id} className="swiper-slide">
-                <SlideComponent item={item} type="movie" />
-              </SwiperSlide>
-            ))
-          : tvData?.results?.map((item) => (
-              <SwiperSlide key={item.id} className="swiper-slide">
-                <SlideComponent item={item} type="tv" />
-              </SwiperSlide>
-            ))}
+              {type === "movie"
+                ? data?.map((item) => (
+                    <SwiperSlide key={item.id} className="swiper-slide">
+                      <SlideComponent item={item} type="movie" />
+                    </SwiperSlide>
+                  ))
+                : tvData?.results?.map((item) => (
+                    <SwiperSlide key={item.id} className="swiper-slide">
+                      <SlideComponent item={item} type="tv" />
+                    </SwiperSlide>
+                  ))}
               <Button
                 onClick={prevSlide}
                 bg="black"
