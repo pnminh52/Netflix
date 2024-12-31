@@ -39,7 +39,7 @@ const Navbar = () => {
   };
   const handleLogoutRedirect = async () => {
     try {
-    await logout();
+      await logout();
       navigate("/");
     } catch (error) {
       // console.log("errr", error);
@@ -210,12 +210,14 @@ const Navbar = () => {
                         <Button
                           mt={2}
                           border={"1px solid red"}
-                          bg={"#E50914"}
+                          _hover={{ bg: "#b20710" }}
+                          _active={{
+                            bg: "red",
+                          }}
+                            bg="#E50914"
                           borderRadius={"4px"}
                           textColor={"white"}
                           onClick={handleLogoutRedirect}
-                          _hover={"none"}
-                          _active={"none"}
                         >
                           Logout
                         </Button>
@@ -224,12 +226,14 @@ const Navbar = () => {
                       <Button
                         mt={2}
                         border={"1px solid red"}
-                        bg={"#E50914"}
+                        _hover={{ bg: "#b20710" }}
+                        _active={{
+                          bg: "red",
+                        }}
+                          bg="#E50914"
                         borderRadius={"4px"}
                         textColor={"white"}
                         onClick={handleLoginRedirect}
-                        _hover={"none"}
-                        _active={"none"}
                       >
                         Login
                       </Button>

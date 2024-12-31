@@ -17,6 +17,7 @@ import "../css/index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules"; // Import các module cần thiết
 import "swiper/css";
+import  "../../public/Netflix.jpg"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
@@ -92,19 +93,19 @@ const Netflix = () => {
         <Flex mb={15} alignItems={"baseline"}>
           <Box position={"relative"} w={"100%"} overflow={"hidden"}>
             <Box
-              display={'flex'}
-              justifyContent={'center'}
-              alignItems={'center'}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
               position={"relative"}
               w={"100%"}
               h={["400px", "500px", "600px"]}
               overflow={"hidden"}
             >
               <img
-                src="https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/VN-en-20241223-TRIFECTA-perspective_b9fd6492-3d40-4af5-8d2d-0a325a17775a_large.jpg"
+                src="../../Netflix.jpg"
                 alt="Background"
                 style={{
-                  width:"100%",
+                  width: "100%",
                   height: "100%",
                   objectFit: "cover",
                 }}
@@ -126,55 +127,63 @@ const Netflix = () => {
               px={4}
               zIndex={0}
             >
-          <Heading fontSize={["2xl", "3xl", "4xl"]} mb={1} textAlign={["center"]}>
-  Unlimited movies, TV shows, and more
-</Heading>
-<Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight="normal" textAlign={["center"]}>
-  Starts at 70,000 ₫. Cancel anytime.
-</Text>
-<Button
-  _hover={{ bg: "#b20710" }}
-  textAlign="center"
-  justifyContent="center"
-  bg="#E50914"
-  color="white"
-  w={["180px", "220px"]}
-  h={["50px", "55px"]}
-  _active={{
-    bg: "red",
-  }}
-  borderRadius="5px"
-  display="inline-flex"
-  justifyItems="center"
-  alignItems="center"
-  gap={2}
-  mx={["auto", "0"]}
->
-  <Text
-    fontSize={["md", "lg", "xl"]}
-    fontWeight="medium"
-    letterSpacing="wide"
-  >
-    Finish Sign-Up
-  </Text>
-  <Icon
-    as="svg"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    width={["20px", "25px", "30px"]}
-    height={["20px", "25px", "30px"]}
-  >
-    <path
-      d="M9 18L15 12L9 6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </Icon>
-</Button>
-
+              <Heading
+                fontSize={["2xl", "3xl", "4xl"]}
+                mb={1}
+                textAlign={["center"]}
+              >
+                Unlimited movies, TV shows, and more
+              </Heading>
+              <Text
+                mb={3}
+                fontSize={["sm", "md", "lg"]}
+                fontWeight="normal"
+                textAlign={["center"]}
+              >
+                Starts at 70,000 ₫. Cancel anytime.
+              </Text>
+              <Button
+                _hover={{ bg: "#b20710" }}
+                _active={{
+                  bg: "red",
+                }}
+                bg="#E50914"
+                textAlign="center"
+                justifyContent="center"
+                color="white"
+                w={["180px", "220px"]}
+                h={["50px", "55px"]}
+                borderRadius="5px"
+                display="inline-flex"
+                justifyItems="center"
+                alignItems="center"
+                gap={2}
+                mx={["auto", "0"]}
+              >
+                <Text
+                  fontSize={["md", "lg", "xl"]}
+                  fontWeight="medium"
+                  letterSpacing="wide"
+                >
+                  Finish Sign-Up
+                </Text>
+                <Icon
+                  as="svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  width={["20px", "25px", "30px"]}
+                  height={["20px", "25px", "30px"]}
+                >
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </Icon>
+              </Button>
             </Box>
             <div className="default-ltr-cache-dulgtd">
               <div className="curve-container">
@@ -285,13 +294,12 @@ const Netflix = () => {
               </Button>
             </Swiper>
           </Box>
-            <Box mb={14}>
+          <Box mb={14}>
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               More Reasons to Join
             </Heading>
 
             <Grid
-              
               mt={4}
               templateColumns={"repeat(auto-fit, minmax(280px, 1fr))"}
               justifyItems="center"
@@ -1020,9 +1028,9 @@ const Netflix = () => {
                 </svg>
               </Card>
             </Grid>
-            </Box>
-           <Box mb={14}>
-           <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
+          </Box>
+          <Box mb={14}>
+            <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Frequently Asked Questions
             </Heading>
             <Grid>
@@ -1424,54 +1432,60 @@ const Netflix = () => {
                 </Box>
               )}
             </Grid>
-           </Box>
-         <Box mb={14}>
-         <Button
-  _hover={{ bg: "#b20710" }}
-  textAlign="center"
-  justifyContent="center"
-  bg="#E50914"
-  color="white"
-  w={["180px", "220px"]}
-  h={["50px", "55px"]}
-  _active={{
-    bg: "red",
-  }}
-  borderRadius="5px"
-  display="inline-flex"
-  justifyItems="center"
-  alignItems="center"
-  gap={2}
-  mx={["auto", "0"]}
->
-  <Text
-    fontSize={["md", "lg", "xl"]}
-    fontWeight="medium"
-    letterSpacing="wide"
-  >
-    Finish Sign-Up
-  </Text>
-  <Icon
-    as="svg"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    width={["20px", "25px", "30px"]}
-    height={["20px", "25px", "30px"]}
-  >
-    <path
-      d="M9 18L15 12L9 6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </Icon>
-</Button>
-         </Box>
-         <Box>
-          <Text cursor={'pointer'} textDecoration={'underline'} color={'gray.300'} >Questions? Contact us.</Text>
-         </Box>
+          </Box>
+          <Box mb={14}>
+            <Button
+              _hover={{ bg: "#b20710" }}
+              textAlign="center"
+              justifyContent="center"
+              bg="#E50914"
+              color="white"
+              w={["180px", "220px"]}
+              h={["50px", "55px"]}
+              _active={{
+                bg: "red",
+              }}
+              borderRadius="5px"
+              display="inline-flex"
+              justifyItems="center"
+              alignItems="center"
+              gap={2}
+              mx={["auto", "0"]}
+            >
+              <Text
+                fontSize={["md", "lg", "xl"]}
+                fontWeight="medium"
+                letterSpacing="wide"
+              >
+                Finish Sign-Up
+              </Text>
+              <Icon
+                as="svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                width={["20px", "25px", "30px"]}
+                height={["20px", "25px", "30px"]}
+              >
+                <path
+                  d="M9 18L15 12L9 6"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </Icon>
+            </Button>
+          </Box>
+          <Box>
+            <Text
+              cursor={"pointer"}
+              textDecoration={"underline"}
+              color={"gray.300"}
+            >
+              Questions? Contact us.
+            </Text>
+          </Box>
         </Container>
       </div>
     </div>

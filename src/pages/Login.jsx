@@ -124,9 +124,11 @@ const Login = () => {
           </FormControl>
           <Button
             color="white"
-            bg={"red"}
-            _hover={"none"}
-            _active={"none"}
+            _hover={{ bg: "#b20710" }}
+            _active={{
+              bg: "red",
+            }}
+              bg="#E50914"
             isLoading={loading}
             type="submit"
             loadingText="Logging in to your account"

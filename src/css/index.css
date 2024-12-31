@@ -60,14 +60,14 @@
   margin-top: 1.375em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 400px) {
   .default-ltr-cache-1f97ztc {
     width: 180%;
     left: -40%;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .default-ltr-cache-dulgtd {
     bottom: -0.5rem;
   }
@@ -78,8 +78,8 @@
   }
 }
 .card {
+  background:linear-gradient(90deg, #1A2144, #200E18);
   padding: 13px;
-  background: #1E182E;
   border-radius: 0.375rem; 
   cursor: pointer;
   display: flex;
@@ -89,7 +89,6 @@
   min-height: 190px;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid transparent;
   border-radius: 20px;
 }
 
