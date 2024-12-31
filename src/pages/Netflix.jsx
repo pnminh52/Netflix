@@ -140,6 +140,7 @@ const Netflix = () => {
 
     fetchData();
   }, [type, region]);
+  
   return (
     <div>
       <div>
