@@ -22,10 +22,12 @@ const CardComponent = ({ item, type }) => {
           src={`${imagePath}/${item?.poster_path}`}
           alt={item?.title || item?.name}
           height={"100%"}
+          w={'100%'}
+          objectFit={'cover'}
         />
         <Box
           className="overlay"
-          pos={"absolute"}
+          position={"absolute"}
           p="2"
           bottom={"0"}
           left={"0"}
