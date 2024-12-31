@@ -215,12 +215,14 @@ const Netflix = () => {
               Trending Now
             </Heading>
             <Select onChange={handleTypeChange} mb={2}>
-              <option value="movies">Vietnam</option>
-              <option value="tv-shows">Global</option>
+              <option style={{
+                
+              }}  value="movies">Vietnam</option>
+              <option  value="tv-shows">Global</option>
             </Select>
             <Select mb={4} value={type} onChange={handleTypeChange}>
-              <option value="movies">Movies</option>
-              <option value="tv-shows">TV Shows</option>
+              <option  value="movies">Movies</option>
+              <option  value="tv-shows">TV Shows</option>
             </Select>
             <Swiper
               modules={[Navigation, Pagination]}
