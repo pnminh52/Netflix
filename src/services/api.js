@@ -61,3 +61,14 @@ export const searchData = async (query, page) => {
   );
   return res?.data;
 };
+
+
+// REGION
+
+export const fetchMoviesByCountry = async (countryCode) => {
+  const { data } = await axios.get(
+    `${baseUrl}/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&with_origin_country=${countryCode}`
+  );
+  return data?.results;
+};
+

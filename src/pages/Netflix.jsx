@@ -21,8 +21,8 @@ import "../../public/Netflix.jpg";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SlideComponent from "../components/SlideComponent";
-import { fetchTrending, fetchTvSeries } from "../services/api";
 import React, { useEffect, useState, useRef } from "react";
+import { fetchTrending, fetchTvSeries, fetchMoviesByCountry } from "../services/api";
 
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
@@ -33,7 +33,9 @@ const Netflix = () => {
     xl: 7,
   });
   const [openCard, setOpenCard] = useState(null);
-  const [region, setRegion]=useState("Vietnam")
+    //!!-----------------------------------------------
+  // const [region, setRegion] = useState("Global");
+    //!!-----------------------------------------------
   const [data, setData] = useState([]);
   const [type, setType] = useState("movie");
   const [tvData, setTvData] = useState([]);
@@ -48,6 +50,11 @@ const Netflix = () => {
   const handleTypeChange = (e) => {
     setType(e.target.value);
   };
+  //!!-----------------------------------------------
+  // const handleRegionChange = (e) => {
+  //   setRegion(e.target.value);
+  // };
+    //!!-----------------------------------------------
   const nextSlide = () => {
     swiperRef.current.swiper.slideNext();
   };
@@ -55,6 +62,26 @@ const Netflix = () => {
     swiperRef.current.swiper.slidePrev();
   };
   //!!useEffect
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current.swiper;
+      setIsFirstSlide(swiper.isBeginning);
+      setIsLastSlide(swiper.isEnd);
+    }
+  }, [data]);
+  useEffect(() => {
+    setIsLoading(true);
+    fetchTrending(timeWindow)
+      .then((res) => {
+        setData(res);
+      })
+      .catch((err) => {
+        // console.log(err, "err");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [timeWindow]);
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;
@@ -77,28 +104,35 @@ const Netflix = () => {
         swiper.off("slideChange", onSlideChange);
       };
     }
-  }, [type, data, tvData]);  
-  // Đảm bảo lắng nghe sự thay đổi của type và dữ liệu
-  useEffect(() => {
-    if (swiperRef.current) {
-      const swiper = swiperRef.current.swiper;
-      setIsFirstSlide(swiper.isBeginning);
-      setIsLastSlide(swiper.isEnd);
-    }
-  }, [data]);
-  useEffect(() => {
-    setIsLoading(true);
-    fetchTrending(timeWindow)
-      .then((res) => {
-        setData(res);
-      })
-      .catch((err) => {
-        // console.log(err, "err");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [timeWindow]);
+  }, [type, data, tvData]); 
+  // //!!-------------------------------------------
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setIsLoading(true);
+
+  //       if (type === "movie") {
+  //         if (region === "Global") {
+  //           const response = await fetchTrending("day");
+  //           setData(response);
+  //         } else if (region === "Vietnam") {
+  //           const response = await fetchMoviesByCountry("Vietnam");
+  //           setData(response);
+  //         }
+  //       } else if (type === "tv") {
+  //         const response = await fetchTvSeries(1, "vote_count.desc");
+  //         setData(response);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [type, region]);
+  // //!!---------------------------------------------
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -231,10 +265,16 @@ const Netflix = () => {
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
-            <Select onChange={handleTypeChange} mb={2}>
-              <option  value="">Vietnam</option>
-              <option  value="">Global</option>
-            </Select>
+            {/* //!!-----------------------------------------------
+            <Select mb={4} value={region} onChange={handleRegionChange}>
+        <option value="Global">Global</option>
+        <option value="Vietnam">Vietnam</option>
+      </Select>
+      //!!----------------------------------------------- */}
+      <Select mb={4} >
+        <option >Global</option>
+        <option >Vietnam</option>
+      </Select>
             <Select mb={4} value={type} onChange={handleTypeChange}>
               <option  value="movie">Movies</option>
               <option  value="tv">TV Shows</option>

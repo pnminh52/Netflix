@@ -1,3 +1,2 @@
-using accont and password, user can login and register 
-manager account (Active, lock)
-manager movies and TV show (Hide, show)
+Sắp xếp các phần tử khi call API ra một mảng mới, và đổ dữ liệu từ mảng mới ra giao diện người dùng, tránh trường hợp user tìm được phim thiếu dữ liệu.
+Tương tự với tìm kiếm cũng trả ra mảng mới, áp dụng tìm kiếm tương đương
