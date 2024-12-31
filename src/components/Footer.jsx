@@ -1,12 +1,23 @@
 import React from "react";
-import { Box, Text, Link, Stack, Container } from "@chakra-ui/react";
+import { Box, Text, VStack, Link, Stack, Container } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <Container mt={0} maxW={"container.xl"} as="footer">
-      <Box display={"grid"} gridTemplateColumns="repeat(4,1fr)" gap={4}>
+    <Container mt={14} maxW={"container.xl"} as="footer">
+      <Box
+        mb={8}
+        display={"grid"}
+        gridTemplateColumns={{
+          base: "repeat(1, 1fr)",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(3, 1fr)",
+          lg: "repeat(4, 1fr)",
+        }}
+        gap={4}
+      >
         <Box>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -14,6 +25,7 @@ const Footer = () => {
             FAQ
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -21,6 +33,7 @@ const Footer = () => {
             Investor Relations
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -37,6 +50,7 @@ const Footer = () => {
         </Box>
         <Box>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -44,6 +58,7 @@ const Footer = () => {
             Help Center
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -51,11 +66,13 @@ const Footer = () => {
             Jobs
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
           ></Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -72,6 +89,7 @@ const Footer = () => {
         </Box>
         <Box>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -79,6 +97,7 @@ const Footer = () => {
             Account
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -86,11 +105,13 @@ const Footer = () => {
             Ways to Watch
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
           ></Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -107,6 +128,7 @@ const Footer = () => {
         </Box>
         <Box>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -114,6 +136,7 @@ const Footer = () => {
             Media Center
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -121,11 +144,13 @@ const Footer = () => {
             Terms of Use
           </Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
           ></Text>
           <Text
+            mb={2}
             cursor={"pointer"}
             textDecoration={"underline"}
             color={"gray.300"}
@@ -134,8 +159,8 @@ const Footer = () => {
           </Text>
         </Box>
       </Box>
-      <Box>
-        <Text>
+      <Box mt={14} mb={14}>
+        <Text cursor={"pointer"} color={"gray.300"}>
           Netflix Vietnam
         </Text>
       </Box>
