@@ -9,7 +9,7 @@ import {
   Grid,
   Card,
   Fade,
-  Stat,
+  Icon,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
@@ -92,6 +92,9 @@ const Netflix = () => {
         <Flex mb={15} alignItems={"baseline"}>
           <Box position={"relative"} w={"100%"} overflow={"hidden"}>
             <Box
+              display={'flex'}
+              justifyContent={'center'}
+              alignItems={'center'}
               position={"relative"}
               w={"100%"}
               h={["400px", "500px", "600px"]}
@@ -101,7 +104,7 @@ const Netflix = () => {
                 src="https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/VN-en-20241223-TRIFECTA-perspective_b9fd6492-3d40-4af5-8d2d-0a325a17775a_large.jpg"
                 alt="Background"
                 style={{
-                  width: "100%",
+                  width:"100%",
                   height: "100%",
                   objectFit: "cover",
                 }}
@@ -123,40 +126,55 @@ const Netflix = () => {
               px={4}
               zIndex={0}
             >
-              <Heading
-                
-                fontSize={["4xl"]}
-                mb={1}
-              >
-                Unlimited movies, TV shows, and more
-              </Heading>
-              <Text mb={2} fontSize={["sm", "md", "lg"]} fontWeight={"normal"}>
-                Starts at 70,000 ₫. Cancel anytime.
-              </Text>
-              <Button
-                _hover="none"
-                textAlign="center"
-                justifyContent="center"
-                bg="red"
-                color="white"
-                px={[4, 6]}
-                py={[2, 4]}
-                _active={{
-                  bg: "red",
-                }}
-                borderRadius="4px"
-                display="inline-flex"
-                alignItems="center"
-              >
-                <Text
-                  fontSize={["sm", "md", "lg"]} // Responsive font size theo breakpoint
-                  fontWeight="medium"
-                  letterSpacing="wide"
-                  // textTransform="uppercase"
-                >
-                  Finish Sign-up
-                </Text>
-              </Button>
+          <Heading fontSize={["2xl", "3xl", "4xl"]} mb={1} textAlign={["center"]}>
+  Unlimited movies, TV shows, and more
+</Heading>
+<Text mb={3} fontSize={["sm", "md", "lg"]} fontWeight="normal" textAlign={["center"]}>
+  Starts at 70,000 ₫. Cancel anytime.
+</Text>
+<Button
+  _hover={{ bg: "#b20710" }}
+  textAlign="center"
+  justifyContent="center"
+  bg="#E50914"
+  color="white"
+  w={["180px", "220px"]}
+  h={["50px", "55px"]}
+  _active={{
+    bg: "red",
+  }}
+  borderRadius="5px"
+  display="inline-flex"
+  justifyItems="center"
+  alignItems="center"
+  gap={2}
+  mx={["auto", "0"]}
+>
+  <Text
+    fontSize={["md", "lg", "xl"]}
+    fontWeight="medium"
+    letterSpacing="wide"
+  >
+    Finish Sign-Up
+  </Text>
+  <Icon
+    as="svg"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    width={["20px", "25px", "30px"]}
+    height={["20px", "25px", "30px"]}
+  >
+    <path
+      d="M9 18L15 12L9 6"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Icon>
+</Button>
+
             </Box>
             <div className="default-ltr-cache-dulgtd">
               <div className="curve-container">
@@ -167,7 +185,7 @@ const Netflix = () => {
           </Box>
         </Flex>
         <Container mb={2} maxW={"container.xl"} px={4}>
-          <Box mt={0} mb={20}>
+          <Box mb={14}>
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Trending Now
             </Heading>
@@ -266,16 +284,14 @@ const Netflix = () => {
                 </svg>
               </Button>
             </Swiper>
-
-            <Box></Box>
           </Box>
-          <Box>
+            <Box mb={14}>
             <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               More Reasons to Join
             </Heading>
 
             <Grid
-              mb={20}
+              
               mt={4}
               templateColumns={"repeat(auto-fit, minmax(280px, 1fr))"}
               justifyItems="center"
@@ -1004,7 +1020,9 @@ const Netflix = () => {
                 </svg>
               </Card>
             </Grid>
-            <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
+            </Box>
+           <Box mb={14}>
+           <Heading mb={4} fontSize={"xl"} fontWeight={"medium"}>
               Frequently Asked Questions
             </Heading>
             <Grid>
@@ -1015,8 +1033,8 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1029,7 +1047,7 @@ const Netflix = () => {
                   fontSize={"xl"}
                   color={"white"}
                 >
-                  Enjoy on your TV
+                  What is Netflix?
                   <svg
                     cursor="pointer"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1054,7 +1072,7 @@ const Netflix = () => {
               </Card>
               {openCard === 1 && (
                 <Box
-                  mb={1}
+                  fontSize={"lg"}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1081,8 +1099,9 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mt={1}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1121,7 +1140,8 @@ const Netflix = () => {
               </Card>
               {openCard === 2 && (
                 <Box
-                  mb={1}
+                  fontSize={"lg"}
+                  mb={0}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1148,8 +1168,9 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mt={1}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1187,7 +1208,8 @@ const Netflix = () => {
               </Card>
               {openCard === 3 && (
                 <Box
-                  mb={1}
+                  fontSize={"lg"}
+                  mb={0}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1216,8 +1238,9 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mt={1}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1255,7 +1278,8 @@ const Netflix = () => {
               </Card>
               {openCard === 4 && (
                 <Box
-                  mb={1}
+                  fontSize={"lg"}
+                  mb={0}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1277,8 +1301,9 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mt={1}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1316,7 +1341,8 @@ const Netflix = () => {
               </Card>
               {openCard === 5 && (
                 <Box
-                  mb={1}
+                  fontSize={"lg"}
+                  mb={0}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1338,8 +1364,9 @@ const Netflix = () => {
                   transition: " 0.3s ease-in-out ",
                 }}
                 cursor={"pointer"}
-                mb={1}
-                p={4}
+                mt={1}
+                mb={0}
+                p={5}
                 bg={"#2D2D2D"}
                 minHeight={"40px"}
                 borderRadius={0}
@@ -1377,7 +1404,7 @@ const Netflix = () => {
               </Card>
               {openCard === 6 && (
                 <Box
-                  mb={1}
+                  mb={0}
                   bg="#333"
                   color="white"
                   p={4}
@@ -1397,22 +1424,54 @@ const Netflix = () => {
                 </Box>
               )}
             </Grid>
-          </Box>
-          {/* <Button
-          _hover={"none"}
-          bg={"red"}
-          mt={2}
-          borderRadius={0}
-          color={"white"}
-          px={[6, 8]}
-          py={[3, 4]}
-          _active={{
-            bg: "red",
-          }}
-          mb={4}
-        >
-          Finish Sign-up
-        </Button> */}
+           </Box>
+         <Box mb={14}>
+         <Button
+  _hover={{ bg: "#b20710" }}
+  textAlign="center"
+  justifyContent="center"
+  bg="#E50914"
+  color="white"
+  w={["180px", "220px"]}
+  h={["50px", "55px"]}
+  _active={{
+    bg: "red",
+  }}
+  borderRadius="5px"
+  display="inline-flex"
+  justifyItems="center"
+  alignItems="center"
+  gap={2}
+  mx={["auto", "0"]}
+>
+  <Text
+    fontSize={["md", "lg", "xl"]}
+    fontWeight="medium"
+    letterSpacing="wide"
+  >
+    Finish Sign-Up
+  </Text>
+  <Icon
+    as="svg"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    width={["20px", "25px", "30px"]}
+    height={["20px", "25px", "30px"]}
+  >
+    <path
+      d="M9 18L15 12L9 6"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Icon>
+</Button>
+         </Box>
+         <Box>
+          <Text cursor={'pointer'} textDecoration={'underline'} color={'gray.300'} >Questions? Contact us.</Text>
+         </Box>
         </Container>
       </div>
     </div>
