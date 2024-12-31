@@ -140,7 +140,7 @@ const Netflix = () => {
 
     fetchData();
   }, [type, region]);
-  
+
   return (
     <div>
       <div>
@@ -211,7 +211,7 @@ const Netflix = () => {
                 display="inline-flex"
                 justifyItems="center"
                 alignItems="center"
-                gap={2}
+                gap={1}
                 mx={["auto", "0"]}
               >
                 <Text
@@ -232,7 +232,7 @@ const Netflix = () => {
                   <path
                     d="M9 18L15 12L9 6"
                     stroke="currentColor"
-                    strokeWidth="1.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
@@ -1507,7 +1507,7 @@ const Netflix = () => {
               display="inline-flex"
               justifyItems="center"
               alignItems="center"
-              gap={2}
+              gap={1}
               mx={["auto", "0"]}
             >
               <Text
@@ -1528,7 +1528,7 @@ const Netflix = () => {
                 <path
                   d="M9 18L15 12L9 6"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
