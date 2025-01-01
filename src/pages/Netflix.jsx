@@ -60,7 +60,6 @@ const Netflix = () => {
       fetchData("global");
     }
   };
-
   const handleTypeChange = (e) => {
     setType(e.target.value);
   };
@@ -127,8 +126,8 @@ const Netflix = () => {
         } else if (type === "tv") {
           const response =
             region === "Vietnam"
-              ? await fetchTvSeries(1, "revenue.desc", "VN")
-              : await fetchTvSeries(1, "popularity.desc");
+              ? await fetchTvSeries(1, "popularity.desc", "VN")
+              : await fetchTvSeries(1, "revenue.desc");
           setTvData(response);
         }
       } catch (error) {
@@ -258,7 +257,7 @@ const Netflix = () => {
             </Select>
             <Select mb={4} value={type} onChange={handleTypeChange}>
               <option value="movie">Movies</option>
-              <option value="tv">TV Shows</option>
+              <option value="tv">TV Shows</option>zz
             </Select>
             <Swiper
               modules={[Navigation, Pagination]}

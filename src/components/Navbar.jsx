@@ -135,7 +135,7 @@ const Navbar = () => {
                     name={user?.email}
                   />
                 </MenuButton>
-                <MenuList mt={2} borderRadius={0} bg={"black"}>
+                <MenuList zIndex={15} mt={2} borderRadius={0} bg={"black"}>
                   <Link to="/watchlist">
                     <MenuItem
                       color={"gray.400"}
