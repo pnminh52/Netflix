@@ -57,7 +57,7 @@ const DynamicItem = () => {
             size="md"
             width="full"
             fontSize={"md"}
-            fontWeight={"normal"}
+            fontWeight={"medium"}
             onClick={handleClick}
           >
             Get Started
