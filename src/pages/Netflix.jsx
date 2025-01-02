@@ -13,6 +13,7 @@ import {
   Icon,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import DynamicItem from "../components/DynamicItem";
 import "../css/index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -69,7 +70,7 @@ const Netflix = () => {
   const prevSlide = () => {
     swiperRef.current.swiper.slidePrev();
   };
-  
+
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;
@@ -505,7 +506,7 @@ const Netflix = () => {
               </Card>
               {/* Card 2 */}
               <Card class="card">
-                <Box>
+                <Box id="dynamic">
                   <Text fontSize={"2xl"} color={"white"}>
                     Download your shows
                   </Text>
@@ -1543,6 +1544,7 @@ const Netflix = () => {
               Questions? Contact us.
             </Text>
           </Box>
+          <DynamicItem />
         </Container>
       </div>
     </div>
