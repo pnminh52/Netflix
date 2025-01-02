@@ -57,7 +57,7 @@ const Watchlist = () => {
           setWatchlist(data);
           setCount(data?.length || 0);
           setTotalPage(Math.ceil(data?.length / itemsPerPage));
-          // Hiển thị số trang tối đa
+          // Cập nhật và hiển thị số trang tối đa
           // console.log(data, "data");
         })
         .catch((err) => {
