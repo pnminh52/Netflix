@@ -128,7 +128,7 @@ const Navbar = () => {
             alignItems={"center"}
             display={{ base: "none", md: "flex" }}
           >
-            <Link to="/homepage">Home</Link>
+            <Link to="/homepage">Trending</Link>
             <Link to="/movies">Movies</Link>
             <Link to="/shows">TV Shows</Link>
             <Link to="/search">
@@ -210,7 +210,7 @@ const Navbar = () => {
                 <DrawerBody>
                   <Flex flexDirection={"column"} gap={"4"} onClick={onClose}>
                     <Link to="/">Home</Link>
-                    <Link to="/homepage">Explore</Link>
+                    <Link to="/homepage">Trending</Link>
                     <Link to="/movies">Movies</Link>
                     <Link to="/shows">TV Shows</Link>
                     {user ? (

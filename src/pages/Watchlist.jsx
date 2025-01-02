@@ -24,6 +24,16 @@ const Watchlist = () => {
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPage] = useState(1);
   const [count, setCount] = useState(0);
+  const itemsPerPage = 5;
+  const currentPageData = watchlist.slice(
+    (activePage - 1) * itemsPerPage,
+    activePage * itemsPerPage
+  );
+  useEffect(() => {
+    if (watchlist.length > 0) {
+      setTotalPage(Math.ceil(watchlist.length / itemsPerPage));
+    }
+  }, [watchlist]);
   useEffect(() => {
     fetchTrending(activePage)
       .then((res) => {
@@ -91,21 +101,8 @@ const Watchlist = () => {
           Your watchlist is empty
         </Heading>
       )}
-
-      {/* 
-      {isLoading && (
-        <Flex justify={"center"} >
-          <Heading
-          textAlign={"center"}
-          as="h3"
-          fontSize={"sm"}
-          fontWeight={"thin"}
-          mb="6"
-          
-        >You must login to use this feature</Heading>
-        </Flex>
-      )} */}
-      {!isLoading && watchlist?.length > 0 && (
+      {!isLoading && currentPageData?.length > 0 && (
+        // Dùng currentPageData thay vì watchList
         <>
           <Grid
             templateColumns={{
@@ -113,20 +110,24 @@ const Watchlist = () => {
             }}
             gap={"4"}
           >
-            {watchlist?.map((item) => (
+            {currentPageData?.map((item) => (
+              // Dùng currentPageData thay vì watchList
               <WatchlistCard
                 key={item?.id}
                 item={item}
                 type={item?.type}
                 setWatchlist={setWatchlist}
+                setCount={setCount} // setCount cập nhật số lượng phim trong list
               />
             ))}
           </Grid>
-          <PaginationComponent
-            activePage={activePage}
-            totalPages={totalPages}
-            setActivePage={setActivePage}
-          />
+          {!isLoading && (
+            <PaginationComponent
+              activePage={activePage}
+              totalPages={totalPages}
+              setActivePage={setActivePage}
+            />
+          )}
         </>
       )}
     </Container>
