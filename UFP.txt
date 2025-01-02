@@ -1,2 +1,0 @@
-Sắp xếp các phần tử khi call API ra một mảng mới, và đổ dữ liệu từ mảng mới ra giao diện người dùng, tránh trường hợp user tìm được phim thiếu dữ liệu.
-Tương tự với tìm kiếm cũng trả ra mảng mới, áp dụng tìm kiếm tương đương

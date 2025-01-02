@@ -13,7 +13,6 @@ import {
 import WatchlistCard from "../components/WatchlistCard";
 import PaginationComponent from "../components/PaginationComponent";
 import { fetchTrending } from "../services/api";
-import { useNavigate } from "react-router-dom";
 
 const Watchlist = () => {
   const { getWatchlist } = useFirestore();
