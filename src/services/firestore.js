@@ -26,7 +26,7 @@ export const useFirestore = () => {
           title: "Error!",
           description: "This item is already in your wathclist.",
           status: "error",
-          duration: 9000,
+          duration: 2000,
           isClosable: true,
         });
         return false;
@@ -35,6 +35,7 @@ export const useFirestore = () => {
       toast({
         title: "Success!",
         description: "Added to watchlist",
+        duration: 2000,
         status: "success",
         isClosable: true,
       });
@@ -43,6 +44,7 @@ export const useFirestore = () => {
       toast({
         title: "Error!",
         description: "An error occurred.",
+        duration: 2000,
         status: "error",
         isClosable: true,
       });
@@ -75,6 +77,7 @@ export const useFirestore = () => {
         title: "Success!",
         description: "Removed from watchlist",
         status: "success",
+        duration: 2000,
         isClosable: true,
       });
     } catch (error) {
@@ -82,6 +85,7 @@ export const useFirestore = () => {
         title: "Error!",
         description: "An error occurred.",
         status: "error",
+        duration: 2000,
         isClosable: true,
       });
       console.log(error, "Error while deleting doc");

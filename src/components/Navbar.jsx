@@ -129,6 +129,7 @@ const Navbar = () => {
             display={{ base: "none", md: "flex" }}
           >
             <Link to="/homepage">Trending</Link>
+            {/* <Link to="/upcoming">Upcoming</Link> */}
             <Link to="/movies">Movies</Link>
             <Link to="/shows">TV Shows</Link>
             <Link to="/search">
@@ -211,6 +212,7 @@ const Navbar = () => {
                   <Flex flexDirection={"column"} gap={"4"} onClick={onClose}>
                     <Link to="/">Home</Link>
                     <Link to="/homepage">Trending</Link>
+                    {/* <Link to="/upcoming">Upcoming</Link> */}
                     <Link to="/movies">Movies</Link>
                     <Link to="/shows">TV Shows</Link>
                     {user ? (

@@ -72,3 +72,27 @@ export const fetchMoviesByCountry = async (countryCode) => {
   return data?.results;
 };
 
+// UPCOMING MOVIES
+
+// export const fetchUpcomingMovies = async (page = 1) => {
+//   const today = new Date().toISOString().split('T')[0]; 
+//   const nextThreeMonths = new Date();
+//   nextThreeMonths.setMonth(nextThreeMonths.getMonth() + 3); 
+//   const nextThreeMonthsDate = nextThreeMonths.toISOString().split('T')[0]; 
+
+//   const { data } = await axios.get(
+//     `${baseUrl}/discover/movie`,
+//     {
+//       params: {
+//         api_key: apiKey,
+//         language: 'en-US',
+//         page,
+//         sort_by: 'release_date.desc', 
+//         'release_date.gte': today, 
+//         'release_date.lte': nextThreeMonthsDate, 
+//       },
+//     }
+//   );
+//   return data;
+// }
+

@@ -16,6 +16,7 @@ import Watchlist from "./pages/Watchlist.jsx";
 import Netflix from "./pages/Netflix.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+// import Upcoming from "./pages/Upcoming.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      // {
+      //   path: "/upcoming",
+      //   element: <Upcoming />,
+      // }
     ],
   },
 ]);
