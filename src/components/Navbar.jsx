@@ -47,7 +47,7 @@ const Navbar = () => {
         title: "Logout Successful",
         description: "You have successfully logout!",
         status: "success",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (error) {

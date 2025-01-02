@@ -34,7 +34,7 @@ const Login = () => {
         title: "Login Successful",
         description: "You have successfully logged in!",
         status: "success",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (error) {
@@ -54,7 +54,7 @@ const Login = () => {
         title: "Login Successful",
         description: "You have successfully logged in!",
         status: "success",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (error) {
@@ -63,7 +63,7 @@ const Login = () => {
         title: "Login Failed",
         description: error.message,
         status: "error",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
       });
     } finally {
