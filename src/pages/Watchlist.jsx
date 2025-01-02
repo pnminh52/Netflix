@@ -91,7 +91,16 @@ const Watchlist = () => {
               <Text>
                 You have {count} movie{count > 1 ? "s" : ""} in your watchlist
               </Text>
-              <Text>
+            </Heading>
+          )}
+          <Heading textAlign={"right"}
+              as="h3"
+              fontSize={"sm"}
+              fontWeight={"thin"}
+              mt={1}
+              display={'flex'}
+              gap={2}>
+          <Text>
               <svg
               style={{ cursor: "pointer" }}
               xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +113,7 @@ const Watchlist = () => {
               <path d="M 15 6 C 10.041282 6 6 10.04128 6 15 C 6 19.95872 10.041282 24 15 24 C 16.586491 24 18.07668 23.58246 19.373047 22.857422 L 17.888672 21.375 C 17.00816 21.772814 16.032235 22 15 22 C 11.122162 22 8 18.87784 8 15 C 8 11.12216 11.122162 8 15 8 C 18.877838 8 22 11.12216 22 15 L 19 15 L 23 20 L 27 15 L 24 15 C 24 10.04128 19.958718 6 15 6 z" />
             </svg>
               </Text>
-            </Heading>
-          )}
+          </Heading>
         </Flex>
       </Flex>
       {count === 0 && !isLoading && (
