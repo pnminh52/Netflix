@@ -26,7 +26,6 @@ const Search = () => {
       setData([]);
       return;
     }
-
     setIsLoading(true);
     searchData(searchValue, activePage)
       .then((res) => {
