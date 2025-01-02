@@ -13,154 +13,99 @@ const Footer = () => {
           md: "repeat(3, 1fr)",
           lg: "repeat(4, 1fr)",
         }}
-        gap={4}
+        gap={1}
         alignItems="start"
       >
-        <Box>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
+        {["FAQ", "Investor Relations", "Privacy", "Speed Test"].map(
+          (text, index) => (
+            <Box
+              key={index}
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+              height="100%"
+            >
+              <Text
+                mb={2}
+                cursor={"pointer"}
+                textDecoration={"underline"}
+                color={"gray.300"}
+              >
+                {text}
+              </Text>
+            </Box>
+          )
+        )}
+        {["Help Center", "Jobs", "Cookie Preferences", "Legal Notices"].map(
+          (text, index) => (
+            <Box
+              key={index}
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+              height="100%"
+            >
+              <Text
+                mb={2}
+                cursor={"pointer"}
+                textDecoration={"underline"}
+                color={"gray.300"}
+              >
+                {text}
+              </Text>
+            </Box>
+          )
+        )}
+        {[
+          "Account",
+          "Ways to Watch",
+          "Corporate Information",
+          "Only on Netflix",
+        ].map((text, index) => (
+          <Box
+            key={index}
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            height="100%"
           >
-            FAQ
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
+            <Text
+              mb={2}
+              cursor={"pointer"}
+              textDecoration={"underline"}
+              color={"gray.300"}
+            >
+              {text}
+            </Text>
+          </Box>
+        ))}
+        {["Media Center", "Terms of Use", "Contact Us"].map((text, index) => (
+          <Box
+            key={index}
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            height="100%"
           >
-            Investor Relations
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Privacy
-          </Text>
-          <Text
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Speed Test
-          </Text>
-        </Box>
-        <Box>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Help Center
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Jobs
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          ></Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Cookie Preferences
-          </Text>
-          <Text
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Legal Notices
-          </Text>
-        </Box>
-        <Box>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Account
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Ways to Watch
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          ></Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Corporate Information
-          </Text>
-          <Text
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Only on Netflix
-          </Text>
-        </Box>
-        <Box>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Media Center
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Terms of Use
-          </Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          ></Text>
-          <Text
-            mb={2}
-            cursor={"pointer"}
-            textDecoration={"underline"}
-            color={"gray.300"}
-          >
-            Contact Us
-          </Text>
-        </Box>
+            <Text
+              mb={2}
+              cursor={"pointer"}
+              textDecoration={"underline"}
+              color={"gray.300"}
+            >
+              {text}
+            </Text>
+          </Box>
+        ))}
       </Box>
-      <Box mb={8} display="flex" justifyContent="left" alignItems="center" gap={4}>
+      {/* Căn đều các text element trong footer */}
+      <Box
+        mb={8}
+        display="flex"
+        justifyContent="left"
+        alignItems="center"
+        gap={4}
+      >
         <Select
           width="auto"
           bg="black"
