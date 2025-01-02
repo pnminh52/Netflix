@@ -21,11 +21,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const Navbar = () => {
   const { user, signInWithGoogle, logout } = useAuth();
   const { onOpen, isOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
+  const toast = useToast();
   // const handleGoogleLogin = async () => {
   //   try {
   //     await signInWithGoogle();
@@ -41,6 +43,13 @@ const Navbar = () => {
     try {
       await logout();
       navigate("/");
+      toast({
+        title: "Logout Successful",
+        description: "You have successfully logout!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
     } catch (error) {
       // console.log("errr", error);
     }
