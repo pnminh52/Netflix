@@ -1,13 +1,28 @@
-  <p className="ml-2">Netflix clone using React, Firebase, Chakra UI, TMDB API</p>
-<p className="flex items-center">
- <img src="https://img.shields.io/badge/Netflix-E50914?style=for-the-badge&logo=netflix&logoColor=white" alt="Netflix" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-   <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
- <img src="https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white" />
- <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> 
-</p>
++--------------------+-----------------------------------------------+
+|    ReactJS         | - Framework JavaScript cho việc xây dựng UI   |
+|                    | - Quản lý trạng thái và giao diện động        |
++--------------------+-----------------------------------------------+
+|    ChakraUI        | - Thư viện UI React để tạo giao diện đẹp và   |
+|                    |   dễ sử dụng với các component có sẵn         |
++--------------------+-----------------------------------------------+
+|    Firebase        | - Cung cấp dịch vụ xác thực, cơ sở dữ liệu    |
+|                    |   và lưu trữ dữ liệu người dùng               |
++--------------------+-----------------------------------------------+
+|    The Movie       | - API cung cấp thông tin về phim, TV Shows,   |
+|    Database API    |   diễn viên, đánh giá, trailer, v.v.          |
++--------------------+-----------------------------------------------+
 
-  
- ![alt text](https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/VN-en-20241223-TRIFECTA-perspective_b9fd6492-3d40-4af5-8d2d-0a325a17775a_large.jpg)
-
-
++------------------------------------------------------------+
+|                        Tính Năng                           |
++------------------------------------------------------------+
+| - Đăng nhập và đăng ký tài khoản, hoặc sử dụng Gmail       |
+|   để đăng nhập                                             |
+| - Hiển thị danh sách phim, TV-Shows, Phim hot              |
+| - Xem thông tin chi tiết về phim (Tên, poster, mô tả,      |
+|   năm sản xuất, đánh giá, thể loại, ngôn ngữ, diễn viên,   |
+|   video trailer, video liên quan)                          |
+| - Tìm kiếm phim theo từ khóa                               |
+| - Xem danh sách phim đã lưu, thêm hoặc xóa phim khỏi danh  |
+|   sách, cập nhật danh sách, chuyển đến trang chi tiết      |
+| - Giao diện responsive hỗ trợ nhiều thiết bị               |
++------------------------------------------------------------+
