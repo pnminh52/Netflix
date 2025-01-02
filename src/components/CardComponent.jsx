@@ -1,7 +1,8 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, IconButton  } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { imagePath } from "../services/api";
-import { StarIcon } from "@chakra-ui/icons";
+import { FaHeart } from "react-icons/fa";
+import { StarIcon   } from "@chakra-ui/icons";
 
 const CardComponent = ({ item, type }) => {
   return (
@@ -18,6 +19,19 @@ const CardComponent = ({ item, type }) => {
           },
         }}
       >
+         {/* <IconButton
+          icon={<FaHeart />}
+          position="absolute"
+          bg={'black'}
+          _hover={"none"}
+          top="10px"
+          left="10px"
+          zIndex="10"
+          variant="outline"
+          colorScheme="white"
+          rounded={"full"}
+          size="sm"
+        /> */}
         <Image
           src={`${imagePath}/${item?.poster_path}`}
           alt={item?.title || item?.name}
@@ -43,7 +57,7 @@ const CardComponent = ({ item, type }) => {
               item?.release_date || item?.first_air_date
             ).getFullYear() || "N/A"}
           </Text>
-          <Flex alignItems={"center"} justifyContent={"center"} gap={2} mt="4">
+          <Flex alignItems={"center"} justifyContent={"center"} gap={2} mt="2">
             <StarIcon fontSize={"small"} />
             <Text>{item?.vote_average?.toFixed(1)}</Text>
           </Flex>

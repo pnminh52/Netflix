@@ -218,7 +218,6 @@ const Navbar = () => {
                         <Link to="/watchlist">Watchlist</Link>
                         <Button
                           mt={2}
-                          border={"1px solid red"}
                           _hover={{ bg: "#b20710" }}
                           _active={{
                             bg: "red",
@@ -234,12 +233,11 @@ const Navbar = () => {
                     ) : (
                       <Button
                         mt={2}
-                        border={"1px solid red"}
                         _hover={{ bg: "#b20710" }}
+                        bg="#E50914"
                         _active={{
                           bg: "red",
                         }}
-                          bg="#E50914"
                         borderRadius={"4px"}
                         textColor={"white"}
                         onClick={handleLoginRedirect}

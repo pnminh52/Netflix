@@ -198,10 +198,10 @@ const Netflix = () => {
               </Text>
               <Button
                 _hover={{ bg: "#b20710" }}
+                bg="#E50914"
                 _active={{
                   bg: "red",
                 }}
-                bg="#E50914"
                 textAlign="center"
                 justifyContent="center"
                 color="white"
@@ -1494,9 +1494,9 @@ const Netflix = () => {
           <Box mb={14}>
             <Button
               _hover={{ bg: "#b20710" }}
+              bg="#E50914"
               textAlign="center"
               justifyContent="center"
-              bg="#E50914"
               color="white"
               w={["180px", "220px"]}
               h={["50px", "55px"]}
