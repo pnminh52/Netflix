@@ -1,28 +1,13 @@
-+--------------------+-----------------------------------------------+
-|    ReactJS         | - Framework JavaScript cho việc xây dựng UI   |
-|                    | - Quản lý trạng thái và giao diện động        |
-+--------------------+-----------------------------------------------+
-|    ChakraUI        | - Thư viện UI React để tạo giao diện đẹp và   |
-|                    |   dễ sử dụng với các component có sẵn         |
-+--------------------+-----------------------------------------------+
-|    Firebase        | - Cung cấp dịch vụ xác thực, cơ sở dữ liệu    |
-|                    |   và lưu trữ dữ liệu người dùng               |
-+--------------------+-----------------------------------------------+
-|    The Movie       | - API cung cấp thông tin về phim, TV Shows,   |
-|    Database API    |   diễn viên, đánh giá, trailer, v.v.          |
-+--------------------+-----------------------------------------------+
+Các Công Nghệ Sử Dụng:
+ReactJS
+ChakraUI
+Firebase
+The Movie Database API
 
-+------------------------------------------------------------+
-|                        Tính Năng                           |
-+------------------------------------------------------------+
-| - Đăng nhập và đăng ký tài khoản, hoặc sử dụng Gmail       |
-|   để đăng nhập                                             |
-| - Hiển thị danh sách phim, TV-Shows, Phim hot              |
-| - Xem thông tin chi tiết về phim (Tên, poster, mô tả,      |
-|   năm sản xuất, đánh giá, thể loại, ngôn ngữ, diễn viên,   |
-|   video trailer, video liên quan)                          |
-| - Tìm kiếm phim theo từ khóa                               |
-| - Xem danh sách phim đã lưu, thêm hoặc xóa phim khỏi danh  |
-|   sách, cập nhật danh sách, chuyển đến trang chi tiết      |
-| - Giao diện responsive hỗ trợ nhiều thiết bị               |
-+------------------------------------------------------------+
+Các Tính Năng Chính:
+Người dùng có thể đăng nhập và đăng ký tài khoản hoặc sử dụng tài khoản Gmail để đăng nhập.
+Xem danh sách các phim, TV-Shows và các bộ phim đang hot.
+Xem thông tin chi tiết về phim, bao gồm tên, poster, mô tả, năm sản xuất, đánh giá, thể loại, ngôn ngữ, diễn viên, trailer và video liên quan.
+Tìm kiếm phim theo từ khóa.
+Xem danh sách các phim đã lưu, cho phép thêm hoặc xóa phim khỏi danh sách, cập nhật danh sách và chuyển đến trang chi tiết của phim.
+Giao diện website được thiết kế responsive, hỗ trợ nhiều thiết bị.
