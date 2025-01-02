@@ -30,10 +30,11 @@ const Watchlist = () => {
     activePage * itemsPerPage
   );
   useEffect(() => {
-    if (watchlist.length > 0) {
-      setTotalPage(Math.ceil(watchlist.length / itemsPerPage));
+    if (currentPageData.length === 0 && activePage > 1) {
+      setActivePage(activePage - 1); 
+      // Function này sẽ chuyển activePage về trang trước đó nếu trang hiện tại không có dữ liệu
     }
-  }, [watchlist]);
+  }, [currentPageData, activePage]);
   useEffect(() => {
     fetchTrending(activePage)
       .then((res) => {
