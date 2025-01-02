@@ -28,6 +28,7 @@ import {
   fetchTvSeries,
   fetchMoviesByCountry,
 } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Netflix = () => {
   const slidesPerView = useBreakpointValue({
@@ -37,6 +38,7 @@ const Netflix = () => {
     lg: 6,
     xl: 7,
   });
+  const navigate=useNavigate()
   const [openCard, setOpenCard] = useState(null);
   const [region, setRegion] = useState("global");
   const [data, setData] = useState([]);
@@ -197,6 +199,7 @@ const Netflix = () => {
                 Starts at 70,000 ₫. Cancel anytime.
               </Text>
               <Button
+              onClick={()=>navigate("/homepage")}
                 _hover={{ bg: "#b20710" }}
                 bg="#E50914"
                 _active={{
