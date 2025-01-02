@@ -56,6 +56,8 @@ const Watchlist = () => {
         .then((data) => {
           setWatchlist(data);
           setCount(data?.length || 0);
+          setTotalPage(Math.ceil(data?.length / itemsPerPage));
+          // Hiển thị số trang tối đa
           // console.log(data, "data");
         })
         .catch((err) => {
@@ -66,7 +68,6 @@ const Watchlist = () => {
         });
     }
   }, [user?.uid, getWatchlist]);
-
   return (
     <Container maxW={"container.xl"}>
       <Flex alignItems={"baseline"} my={"10"} mt={"2"}>
